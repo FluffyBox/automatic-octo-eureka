@@ -36,6 +36,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local tooling / raw source assets (not needed in the deployed site)
+/.claude/
+/usii_part2/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
