@@ -1,26 +1,55 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@plugin "@tailwindcss/typography";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-heading: var(--font-playfair);
+  --font-body: var(--font-inter);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: #f8f5f0;
+  --color-foreground: #2b211b;
+
+  --color-primary: #3f2a1d;
+  --color-primary-foreground: #f8f5f0;
+
+  --color-accent: #b8873a;
+  --color-accent-foreground: #2b211b;
+
+  --color-muted: #eee7dc;
+  --color-muted-foreground: #6b5d4f;
+
+  --color-border: #ded3c2;
+  --color-card: #ffffff;
+  --color-card-foreground: #2b211b;
+
+  --color-dark: #241a13;
+  --color-dark-foreground: #f8f5f0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-accent-foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
