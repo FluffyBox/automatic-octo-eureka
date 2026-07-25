@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Ruler, Hammer, ClipboardList, Users, Wrench, ListChecks, Layers, FileText, MessageSquare, Target, Eye } from "lucide-react";
+import { Ruler, Hammer, ClipboardList, Users, Wrench, ListChecks, Layers, MessageSquare, Target, Eye } from "lucide-react";
 import { Hero } from "@/components/sections/Hero";
 import { AboutSplit } from "@/components/sections/AboutSplit";
 import { IconStrip } from "@/components/sections/IconStrip";
-import { IconFeatureGrid } from "@/components/sections/IconFeatureGrid";
 import { CardGrid } from "@/components/sections/CardGrid";
+import { ServicesShowcase } from "@/components/sections/ServicesShowcase";
+import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { FaqSection } from "@/components/sections/FaqSection";
-import { Section, SectionHeading } from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
@@ -100,12 +101,11 @@ export default function Home() {
         ]}
       />
 
-      <CardGrid
-        eyebrow="Servicii"
-        title="Servicii pentru un proces complet și bine organizat"
-        description="Te sprijinim de la alegerea soluției potrivite până la instalarea finală."
-        columns={4}
-        items={[
+      <ServicesShowcase
+        eyebrow="Serviciile noastre"
+        title="Servicii complete pentru uși de interior"
+        description="Suntem alături de tine de la alegerea modelului până la montajul final, pentru un proces simplu, clar și bine organizat."
+        left={[
           {
             icon: MessageSquare,
             title: "Consultanță",
@@ -121,10 +121,22 @@ export default function Home() {
             title: "Montaj",
             description: "Instalăm ușile cu atenție la aliniere, funcționare și finisaj, pentru un rezultat cât mai curat și durabil.",
           },
+        ]}
+        right={[
           {
             icon: ListChecks,
             title: "Asistență pentru alegerea modelului",
-            description: "Te ajutăm să compari variantele și să alegi în funcție de design, utilizare, întreținere și compatibilitatea cu interiorul.",
+            description: "Te ajutăm să compari variantele și să alegi în funcție de design, utilizare și compatibilitatea cu interiorul.",
+          },
+          {
+            icon: Layers,
+            title: "Servicii integrate",
+            description: "Poți beneficia de consultanță, măsurători și montaj printr-un singur furnizor.",
+          },
+          {
+            icon: MessageSquare,
+            title: "Comunicare clară",
+            description: "Primești informații despre pașii următori și detaliile necesare înainte de confirmarea comenzii.",
           },
         ]}
       />
@@ -143,31 +155,55 @@ export default function Home() {
         ]}
       />
 
-      <IconFeatureGrid
+      <WhyChooseUs
         className="bg-muted/40"
         eyebrow="Diferențiatori"
         title="De ce să alegi Parquet Doors"
-        columns={3}
-        items={[
-          { icon: MessageSquare, title: "Consultanță înainte de comandă", description: "Primești recomandări bazate pe nevoile și particularitățile locuinței tale." },
-          { icon: Ruler, title: "Măsurători realizate înainte de montaj", description: "Dimensiunile sunt verificate pentru o pregătire mai bună a proiectului." },
-          { icon: Layers, title: "Servicii integrate", description: "Poți beneficia de consultanță, măsurători și montaj printr-un singur furnizor." },
-          { icon: FileText, title: "Ofertă adaptată proiectului", description: "Costurile sunt stabilite în funcție de modelele, dimensiunile și serviciile selectate." },
-          { icon: ListChecks, title: "Comunicare clară", description: "Primești informații despre pașii următori și detaliile necesare înainte de confirmarea comenzii." },
+        description="Cu accent pe consultanță, măsurători corecte și servicii integrate, te ajutăm să obții un rezultat curat, bine organizat și adaptat proiectului tău."
+        checklist={[
+          "Consultanță înainte de comandă",
+          "Măsurători înainte de montaj",
+          "Servicii integrate, un singur furnizor",
+          "Ofertă adaptată proiectului",
+          "Comunicare clară pe tot parcursul",
         ]}
+        stats={[
+          { value: "5+", label: "Nuanțe de finisaj disponibile" },
+          { value: "3-în-1", label: "Consultanță, măsurători și montaj" },
+          { value: "5.0★", label: "Rating Google (6 recenzii)" },
+        ]}
+        cta={{ label: "Solicită o ofertă", href: "/oferta" }}
+        images={{
+          main: { src: "/images/proiecte/proiect-03.webp", alt: "Ușă de interior instalată de Parquet Doors" },
+          secondary: { src: "/images/usi/wenge/wenge-04.webp", alt: "Detaliu ușă modernă din lemn wenge" },
+        }}
       />
 
       <Section>
         <Container>
-          <SectionHeading eyebrow="Proiecte" title="Inspirație pentru locuința ta" description="Descoperă exemple de uși integrate în diferite tipuri de amenajări și folosește-le ca punct de plecare pentru propriul proiect." align="center" className="mx-auto" />
-          <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {["proiect-01", "proiect-02", "proiect-06", "proiect-11"].map((slug) => (
-              <div key={slug} className="relative aspect-square overflow-hidden rounded-xl border border-border">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-accent">
+                <span className="inline-block size-1.5 rounded-full bg-accent" aria-hidden="true" />
+                Proiecte
+              </p>
+              <h2 className="mt-3 max-w-md text-3xl font-semibold leading-tight text-primary sm:text-4xl">
+                Inspirație pentru locuința ta
+              </h2>
+            </div>
+            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
+              Descoperă exemple de uși integrate în diferite tipuri de amenajări și folosește-le ca
+              punct de plecare pentru propriul proiect.
+            </p>
+          </div>
+          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
+            {["proiect-01", "proiect-02", "proiect-06", "proiect-11", "proiect-14", "proiect-03"].map((slug) => (
+              <div key={slug} className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border">
                 <Image
                   src={`/images/proiecte/${slug}.webp`}
                   alt="Proiect realizat de Parquet Doors"
                   fill
-                  sizes="(min-width: 1024px) 20vw, 45vw"
+                  sizes="(min-width: 1024px) 30vw, 45vw"
                   className="object-cover"
                 />
               </div>
