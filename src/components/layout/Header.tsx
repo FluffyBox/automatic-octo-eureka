@@ -24,7 +24,7 @@ export function Header() {
           Parquet <span className="text-accent">Doors</span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Navigare principală">
+        <nav className="hidden shrink-0 items-center xl:flex" aria-label="Navigare principală">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             if (link.children) {
@@ -33,7 +33,7 @@ export function Header() {
                   <Link
                     href={link.href}
                     className={cn(
-                      "flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted",
+                      "flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted",
                       isActive && "text-accent"
                     )}
                   >
@@ -59,7 +59,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "rounded-full px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted",
+                  "whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted",
                   isActive && "text-accent"
                 )}
               >
@@ -69,7 +69,7 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <Button href={navCta.href} variant="primary">
             {navCta.label}
           </Button>
@@ -77,7 +77,7 @@ export function Header() {
 
         <button
           type="button"
-          className="inline-flex size-11 items-center justify-center rounded-full text-primary lg:hidden"
+          className="inline-flex size-11 items-center justify-center rounded-full text-primary xl:hidden"
           aria-label={mobileOpen ? "Închide meniul" : "Deschide meniul"}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
@@ -87,7 +87,7 @@ export function Header() {
       </Container>
 
       {mobileOpen && (
-        <div className="border-t border-border bg-background lg:hidden">
+        <div className="border-t border-border bg-background xl:hidden">
           <Container className="flex flex-col gap-1 py-4">
             {navLinks.map((link) => (
               <div key={link.href}>
