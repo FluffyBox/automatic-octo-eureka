@@ -3,7 +3,7 @@
 export const siteConfig = {
   brandName: "Parquet Doors",
   legalName: "CMG International SRL",
-  url: "https://www.parquetdoors.ro", // PLACEHOLDER — set to the real production domain
+  url: "https://www.parchet-usi.ro", // canonical production domain (parket-usi.ro redirects here)
   phone: "021 322 7057", // from Google Business Profile
   phoneHref: "+40213227057", // from Google Business Profile (E.164 format for tel: links)
   email: "placeholder@mail.com", // PLACEHOLDER — not listed on the Google Business Profile
