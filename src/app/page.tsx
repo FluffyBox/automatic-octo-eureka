@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Ruler, Hammer, ClipboardList, Users, Wrench, ListChecks, Layers, FileText, MessageSquare } from "lucide-react";
+import { Ruler, Hammer, ClipboardList, Users, Wrench, ListChecks, Layers, FileText, MessageSquare, Target, Eye } from "lucide-react";
 import { Hero } from "@/components/sections/Hero";
+import { AboutSplit } from "@/components/sections/AboutSplit";
+import { IconStrip } from "@/components/sections/IconStrip";
 import { IconFeatureGrid } from "@/components/sections/IconFeatureGrid";
 import { CardGrid } from "@/components/sections/CardGrid";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
@@ -31,35 +33,35 @@ export default function Home() {
         image={{ src: "/images/usi/stejar-auriu/stejar-auriu-06.webp", alt: "Ușă de interior din stejar auriu, cu toc și pervaz asortate" }}
       />
 
-      <IconFeatureGrid
-        eyebrow="De ce Parquet Doors"
-        title="Tot ce ai nevoie, de la alegerea modelului până la montaj"
-        description="Nu alegi doar o ușă. Alegi un element important din designul și funcționalitatea locuinței tale. De aceea, îți oferim sprijin în fiecare etapă."
+      <AboutSplit
+        eyebrow="Despre noi"
+        title="Soluții potrivite pentru fiecare locuință"
+        description="Parquet Doors | CMG International SRL oferă uși de interior și servicii de consultanță, măsurători și montaj pentru proiecte rezidențiale. Punem accent pe alegerea corectă a produsului, măsurători bine realizate și un proces de instalare atent organizat."
+        stat={{ value: "100%", label: "Furnir natural de stejar" }}
+        image={{ src: "/images/usi/stejar-auriu/stejar-auriu-01.webp", alt: "Ușă de interior din stejar auriu, montată într-o locuință" }}
+        cta={{ label: "Discută cu un consultant", href: "/despre-noi" }}
         items={[
           {
-            icon: Users,
-            title: "Consultanță personalizată",
-            description:
-              "Te ajutăm să alegi modelul, finisajul și configurația potrivite pentru locuința ta, ținând cont de stil, spațiu și buget.",
+            icon: Target,
+            title: "Misiune",
+            description: "Să oferim clienților rezidențiali soluții clare și potrivite pentru alegerea și instalarea ușilor de interior.",
           },
           {
-            icon: Ruler,
-            title: "Măsurători corecte",
-            description:
-              "Realizăm măsurătorile necesare pentru a reduce riscul incompatibilităților și al ajustărilor neprevăzute în timpul instalării.",
+            icon: Eye,
+            title: "Viziune",
+            description: "Să construim relații bazate pe încredere, recomandări corecte și lucrări realizate cu atenție.",
           },
-          {
-            icon: Hammer,
-            title: "Montaj profesionist",
-            description:
-              "Montajul este realizat atent, pentru o funcționare corectă și un rezultat final curat și bine integrat în spațiu.",
-          },
-          {
-            icon: ClipboardList,
-            title: "Proces clar",
-            description:
-              "Primești informații despre etape, opțiuni și costuri, astfel încât să poți lua o decizie informată.",
-          },
+        ]}
+      />
+
+      <IconStrip
+        items={[
+          { icon: Users, label: "Consultanță personalizată" },
+          { icon: Ruler, label: "Măsurători corecte" },
+          { icon: Hammer, label: "Montaj profesionist" },
+          { icon: ClipboardList, label: "Proces clar" },
+          { icon: Layers, label: "Servicii integrate" },
+          { icon: MessageSquare, label: "Comunicare clară" },
         ]}
       />
 
@@ -140,35 +142,6 @@ export default function Home() {
           { title: "Stabilim montajul", description: "După confirmarea comenzii, programăm montajul și finalizăm instalarea." },
         ]}
       />
-
-      <Section>
-        <Container className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          <div>
-            <SectionHeading eyebrow="Despre noi" title="Soluții potrivite pentru fiecare locuință" />
-            <p className="mt-6 leading-relaxed text-muted-foreground">
-              Parquet Doors | CMG International SRL oferă uși de interior și servicii de consultanță,
-              măsurători și montaj pentru proiecte rezidențiale. Punem accent pe alegerea corectă a
-              produsului, măsurători bine realizate și un proces de instalare atent organizat.
-            </p>
-            <Button href="/despre-noi" variant="outline" className="mt-6">
-              Discută cu un consultant
-            </Button>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { title: "Atenție la detalii", text: "Verificăm elementele importante înainte de comandă și montaj." },
-              { title: "Recomandări clare", text: "Îți prezentăm opțiunile într-un mod simplu și ușor de înțeles." },
-              { title: "Soluții personalizate", text: "Recomandările sunt adaptate spațiului și nevoilor fiecărui client." },
-              { title: "Respect pentru locuința ta", text: "Montajul este realizat cu grijă, pentru un rezultat curat și bine integrat." },
-            ].map((item) => (
-              <div key={item.title} className="rounded-2xl border border-border bg-card p-5">
-                <h3 className="font-semibold text-primary">{item.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </Section>
 
       <IconFeatureGrid
         className="bg-muted/40"

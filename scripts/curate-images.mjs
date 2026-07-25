@@ -17,9 +17,6 @@ const MAP = [
   ["usi/stejar-auriu/stejar-auriu-05.webp", "WhatsApp Image 2026-07-22 at 11.28.12.jpeg"],
   ["usi/stejar-auriu/stejar-auriu-06.webp", "WhatsApp Image 2026-07-22 at 11.28.15.jpeg"],
   ["usi/stejar-auriu/stejar-auriu-07.webp", "WhatsApp Image 2026-07-22 at 11.28.18.jpeg"],
-  ["usi/stejar-auriu/stejar-auriu-08.webp", "IMG-20150603-WA0002 (1).jpg"],
-  ["usi/stejar-auriu/stejar-auriu-09.webp", "IMG-20150603-WA0005 (1).jpg"],
-  ["usi/stejar-auriu/stejar-auriu-10.webp", "IMG-20150603-WA0007 (1).jpg"],
 
   // Wenge (dark modern) — product/finish showcase
   ["usi/wenge/wenge-01.webp", "image001.jpg"],
@@ -35,6 +32,9 @@ const MAP = [
   ["usi/nuc-ciresi/nuc-02.webp", "iphone 015.JPG"],
   ["usi/nuc-ciresi/nuc-03.webp", "iphone 016.JPG"],
   ["usi/nuc-ciresi/nuc-04.webp", "WhatsApp Image 2026-07-22 at 11.28.16.jpeg"],
+  ["usi/nuc-ciresi/nuc-05.webp", "IMG-20150603-WA0002 (1).jpg"],
+  ["usi/nuc-ciresi/nuc-06.webp", "IMG-20150603-WA0005 (1).jpg"],
+  ["usi/nuc-ciresi/nuc-07.webp", "IMG-20150603-WA0007 (1).jpg"],
 
   // Decorative cutout model — product/finish showcase
   ["usi/decupaj-decorativ/decupaj-01.webp", "model decupaj usa dormitor.jpg"],

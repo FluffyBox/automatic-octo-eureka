@@ -15,7 +15,7 @@ const finishes = [
     slug: "stejar-auriu",
     name: "Stejar auriu",
     description: "Nuanță caldă și luminoasă, potrivită amenajărilor clasice și contemporane deopotrivă.",
-    count: 10,
+    count: 7,
   },
   {
     slug: "wenge",
@@ -27,7 +27,7 @@ const finishes = [
     slug: "nuc-ciresi",
     name: "Nuc și cireș",
     description: "Nuanțe calde de nuc și cireș, cu un aspect rafinat și tradițional.",
-    count: 4,
+    count: 7,
   },
   {
     slug: "decupaj-decorativ",
