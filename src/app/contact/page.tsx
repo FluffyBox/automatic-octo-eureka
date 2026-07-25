@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/PageHero";
 import { ContactOptions } from "@/components/sections/ContactOptions";
+import { GoogleMap } from "@/components/sections/GoogleMap";
+import { GoogleRatingBadge } from "@/components/sections/GoogleRatingBadge";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/site-config";
@@ -20,7 +22,10 @@ export default function ContactPage() {
 
       <Section>
         <Container className="max-w-4xl">
-          <SectionHeading title="Spune-ne cu ce te putem ajuta" align="center" className="mx-auto" />
+          <div className="flex flex-col items-center gap-3">
+            <SectionHeading title="Spune-ne cu ce te putem ajuta" align="center" className="mx-auto" />
+            <GoogleRatingBadge className="text-primary" />
+          </div>
           <div className="mt-12">
             <ContactOptions />
           </div>
@@ -42,6 +47,10 @@ export default function ContactPage() {
                 {siteConfig.email}
               </p>
             </div>
+          </div>
+
+          <div className="mt-8">
+            <GoogleMap />
           </div>
         </Container>
       </Section>

@@ -1,15 +1,18 @@
-// PLACEHOLDER VALUES — replace every field below with real business info before launch.
+// PLACEHOLDER VALUES — replace remaining fields below with real business info before launch.
 // See README.md for the full pre-launch checklist.
 export const siteConfig = {
   brandName: "Parquet Doors",
   legalName: "CMG International SRL",
   url: "https://www.parquetdoors.ro", // PLACEHOLDER — set to the real production domain
-  phone: "+40 700 000 000", // PLACEHOLDER
-  phoneHref: "+40700000000", // PLACEHOLDER — digits only, used in tel: links
-  email: "placeholder@mail.com", // PLACEHOLDER
-  whatsappNumber: "40700000000", // PLACEHOLDER — country code + number, no + or spaces (wa.me format)
-  address: "Completează adresa aici", // PLACEHOLDER
-  hours: "Luni - Vineri, 09:00 - 18:00", // PLACEHOLDER
+  phone: "021 322 7057", // from Google Business Profile
+  phoneHref: "+40213227057", // from Google Business Profile (E.164 format for tel: links)
+  email: "placeholder@mail.com", // PLACEHOLDER — not listed on the Google Business Profile
+  // PLACEHOLDER — the Google Business phone (021...) is a Bucharest landline, not WhatsApp-capable.
+  // Set this to a real mobile number once available.
+  whatsappNumber: "40700000000",
+  address: "Strada Vitejilor 29, 031525 București", // from Google Business Profile
+  hours: "Luni - Vineri, 09:00 - 18:00", // PLACEHOLDER — Google listing only confirms opening time (09:00), not full schedule
+  googleRating: { value: 5.0, count: 6 }, // from Google Business Profile ("Parchet Uși | CMG International SRL")
   socialLinks: {
     facebook: "", // PLACEHOLDER
     instagram: "", // PLACEHOLDER
@@ -28,6 +31,14 @@ export function mailtoHref(subject?: string) {
   return subject
     ? `mailto:${siteConfig.email}?subject=${encodeURIComponent(subject)}`
     : `mailto:${siteConfig.email}`;
+}
+
+export function googleMapsEmbedSrc() {
+  return `https://www.google.com/maps?q=${encodeURIComponent(siteConfig.address)}&output=embed`;
+}
+
+export function googleMapsDirectionsHref() {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.address)}`;
 }
 
 export const defaultWhatsappMessage =
