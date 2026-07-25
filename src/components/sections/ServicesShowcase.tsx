@@ -1,7 +1,7 @@
+import Image from "next/image";
 import type { LucideIcon } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
-import { DoorIllustration } from "@/components/sections/DoorIllustration";
 import { cn } from "@/lib/cn";
 
 export type ServiceItem = {
@@ -62,7 +62,16 @@ export function ServicesShowcase({
             ))}
           </div>
 
-          <DoorIllustration className="order-first lg:order-none lg:px-6" />
+          <div className="order-first flex justify-center lg:order-none lg:px-6">
+            <Image
+              src="/images/illustrations/usa-3d-deschisa.png"
+              alt="Randare 3D a unei uși de interior din stejar, întredeschisă"
+              width={364}
+              height={600}
+              className="motion-safe:animate-door-float w-full max-w-[220px] drop-shadow-2xl lg:max-w-[260px]"
+              priority={false}
+            />
+          </div>
 
           <div className="flex flex-col gap-10">
             {right.map((item) => (
