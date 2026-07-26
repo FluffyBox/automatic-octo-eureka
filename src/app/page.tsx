@@ -286,6 +286,11 @@ export default function Home() {
             name: "[NUME CLIENT]",
             location: "[LOCALITATE]",
           },
+          {
+            quote: "Ne-au oferit variante potrivite bugetului nostru, fără să insiste pe cele mai scumpe modele.",
+            name: "[NUME CLIENT]",
+            location: "[LOCALITATE]",
+          },
         ]}
       />
 
