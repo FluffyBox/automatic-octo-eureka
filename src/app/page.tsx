@@ -266,6 +266,26 @@ export default function Home() {
             name: "[NUME CLIENT]",
             location: "[LOCALITATE]",
           },
+          {
+            quote: "Ne-au ajutat să alegem finisajul potrivit pentru fiecare cameră, iar montajul a decurs fără probleme.",
+            name: "[NUME CLIENT]",
+            location: "[LOCALITATE]",
+          },
+          {
+            quote: "Măsurătorile au fost precise, iar ușile s-au potrivit perfect la montaj, fără ajustări ulterioare.",
+            name: "[NUME CLIENT]",
+            location: "[LOCALITATE]",
+          },
+          {
+            quote: "Comunicare clară de la prima discuție până la finalizarea lucrării. Recomand cu încredere.",
+            name: "[NUME CLIENT]",
+            location: "[LOCALITATE]",
+          },
+          {
+            quote: "Echipa a fost punctuală și atentă la detalii, iar rezultatul final arată exact cum ne-am dorit.",
+            name: "[NUME CLIENT]",
+            location: "[LOCALITATE]",
+          },
         ]}
       />
 
