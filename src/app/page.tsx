@@ -6,7 +6,9 @@ import { AboutSplit } from "@/components/sections/AboutSplit";
 import { IconStrip } from "@/components/sections/IconStrip";
 import { CardGrid } from "@/components/sections/CardGrid";
 import { ServicesShowcase } from "@/components/sections/ServicesShowcase";
+import { CustomDoorConfigurator } from "@/components/sections/CustomDoorConfigurator";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
+import { PricingSection } from "@/components/sections/PricingSection";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { CtaBanner } from "@/components/sections/CtaBanner";
@@ -141,6 +143,8 @@ export default function Home() {
         ]}
       />
 
+      <CustomDoorConfigurator />
+
       <ProcessSteps
         className="bg-muted/40"
         eyebrow="Cum lucrăm"
@@ -177,6 +181,40 @@ export default function Home() {
           main: { src: "/images/proiecte/proiect-03.webp", alt: "Ușă de interior instalată de Parquet Doors" },
           secondary: { src: "/images/usi/wenge/wenge-04.webp", alt: "Detaliu ușă modernă din lemn wenge" },
         }}
+      />
+
+      <PricingSection
+        eyebrow="Prețuri"
+        title="Lista de prețuri orientative"
+        description="Alege pachetul potrivit nevoilor tale. Prețul final se confirmă întotdeauna după măsurători."
+        note="Prețurile sunt orientative și pot varia în funcție de dimensiuni, finisaj și complexitatea proiectului. Prețul final se confirmă după măsurători."
+        plans={[
+          {
+            name: "Ușă simplă",
+            price: "de la 750 lei",
+            unit: "/ bucată",
+            description: "Panou de ușă, fără toc și pervaz.",
+            features: ["Finisaj la alegere", "Foaie de ușă montată pe balamale", "Fără toc și pervaz"],
+            cta: { label: "Solicită ofertă", href: "/oferta" },
+          },
+          {
+            name: "Ușă completă",
+            price: "de la 1150 lei",
+            unit: "/ bucată",
+            description: "Ușă cu toc, pervaz și accesorii incluse.",
+            features: ["Finisaj la alegere", "Toc și pervaz incluse", "Accesorii și feronerie standard"],
+            highlighted: true,
+            cta: { label: "Solicită ofertă", href: "/oferta" },
+          },
+          {
+            name: "Pachet cu montaj",
+            price: "de la 1450 lei",
+            unit: "/ bucată",
+            description: "Ușă completă, măsurători și montaj profesionist.",
+            features: ["Ușă, toc și pervaz incluse", "Măsurători înainte de comandă", "Montaj profesionist"],
+            cta: { label: "Solicită ofertă", href: "/oferta" },
+          },
+        ]}
       />
 
       <Section>
