@@ -20,7 +20,7 @@ export default function StructuraUsilorPage() {
 
       <Section>
         <Container className="max-w-3xl">
-          <article className="prose prose-neutral max-w-none prose-headings:font-heading prose-headings:text-primary prose-a:text-accent">
+          <article className="prose prose-neutral max-w-none prose-headings:font-heading prose-headings:text-primary prose-a:text-accent-text">
             <h2>Uși din lemn cu structură celulară</h2>
 
             <h3>Structura foii de ușă</h3>

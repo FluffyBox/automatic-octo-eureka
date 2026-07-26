@@ -20,7 +20,7 @@ export function CookieBanner() {
         <p className="text-sm leading-relaxed text-foreground">
           Folosim cookie-uri necesare pentru funcționarea website-ului și, cu acordul tău,
           cookie-uri pentru analiză și îmbunătățirea experienței de navigare.{" "}
-          <Link href="/politica-de-cookie-uri" className="underline hover:text-accent">
+          <Link href="/politica-de-cookie-uri" className="underline hover:text-accent-text">
             Vezi politica de cookie-uri
           </Link>
           .

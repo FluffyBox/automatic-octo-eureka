@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -13,6 +13,7 @@ const DELAY_MS = 20000;
 export function ContactPopup() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (EXCLUDED_PATHS.includes(pathname)) return;
@@ -25,6 +26,19 @@ export function ContactPopup() {
 
     return () => clearTimeout(timer);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    closeButtonRef.current?.focus();
+
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [open]);
 
   if (!open) return null;
 
@@ -41,6 +55,7 @@ export function ContactPopup() {
         onClick={(e) => e.stopPropagation()}
       >
         <button
+          ref={closeButtonRef}
           type="button"
           onClick={() => setOpen(false)}
           aria-label="Închide"

@@ -44,7 +44,7 @@ export function ContactOptions() {
           </div>
           <h3 className="mt-5 text-lg font-semibold text-primary">{option.title}</h3>
           <p className="mt-2 text-sm text-muted-foreground">{option.description}</p>
-          <span className="mt-5 text-sm font-semibold text-accent">{option.cta} →</span>
+          <span className="mt-5 text-sm font-semibold text-accent-text">{option.cta} →</span>
         </a>
       ))}
     </div>

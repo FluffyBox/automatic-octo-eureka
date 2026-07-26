@@ -48,7 +48,7 @@ export default async function BlogPostPage({
         <Container className="max-w-3xl">
           <Link
             href={`/blog?categorie=${encodeURIComponent(post.meta.category)}`}
-            className="text-xs font-semibold uppercase tracking-wider text-accent"
+            className="text-xs font-semibold uppercase tracking-wider text-accent-text"
           >
             {post.meta.category}
           </Link>
@@ -66,7 +66,7 @@ export default async function BlogPostPage({
 
       <Section>
         <Container className="max-w-3xl">
-          <article className="prose prose-neutral max-w-none prose-headings:font-heading prose-headings:text-primary prose-a:text-accent">
+          <article className="prose prose-neutral max-w-none prose-headings:font-heading prose-headings:text-primary prose-a:text-accent-text">
             <MDXRemote source={post.content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
           </article>
         </Container>

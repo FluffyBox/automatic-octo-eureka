@@ -13,6 +13,10 @@
 
   --color-accent: #b8873a;
   --color-accent-foreground: #2b211b;
+  /* Darker variant of --color-accent for text on light surfaces (background/card/muted) —
+     the base accent fails WCAG AA (4.5:1) as small text there; this hits ~5.2:1+. Keep using
+     --color-accent for buttons/borders/icons and for text on dark surfaces, where it already passes. */
+  --color-accent-text: #7d5920;
 
   --color-muted: #eee7dc;
   --color-muted-foreground: #6b5d4f;

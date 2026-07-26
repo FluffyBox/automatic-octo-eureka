@@ -21,7 +21,7 @@ export function Header() {
           className="font-heading text-2xl font-semibold tracking-tight text-primary"
           onClick={() => setMobileOpen(false)}
         >
-          Parquet <span className="text-accent">Doors</span>
+          Parquet <span className="text-accent-text">Doors</span>
         </Link>
 
         <nav className="hidden shrink-0 items-center xl:flex" aria-label="Navigare principală">
@@ -34,7 +34,7 @@ export function Header() {
                     href={link.href}
                     className={cn(
                       "flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted",
-                      isActive && "text-accent"
+                      isActive && "text-accent-text"
                     )}
                   >
                     {link.label}
@@ -60,7 +60,7 @@ export function Header() {
                 href={link.href}
                 className={cn(
                   "whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted",
-                  isActive && "text-accent"
+                  isActive && "text-accent-text"
                 )}
               >
                 {link.label}

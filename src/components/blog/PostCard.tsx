@@ -24,7 +24,7 @@ export function PostCard({ post }: { post: PostMeta }) {
         />
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <span className="text-xs font-semibold uppercase tracking-wider text-accent">
+        <span className="text-xs font-semibold uppercase tracking-wider text-accent-text">
           {post.category}
         </span>
         <h3 className="mt-3 text-lg font-semibold leading-snug text-primary">{post.title}</h3>

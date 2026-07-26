@@ -44,7 +44,7 @@ export function ServicesShowcase({
       <Container>
         <div className="flex flex-col gap-6 border-b border-border pb-12 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-accent">
+            <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-accent-text">
               <span className="inline-block size-1.5 rounded-full bg-accent" aria-hidden="true" />
               {eyebrow}
             </p>

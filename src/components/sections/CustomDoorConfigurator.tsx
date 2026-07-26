@@ -34,6 +34,7 @@ function PillOption({
     <button
       type="button"
       onClick={onClick}
+      aria-pressed={active}
       className={cn(
         "rounded-full border px-4 py-2 text-sm font-medium transition-colors",
         active ? "border-accent bg-accent text-accent-foreground" : "border-border text-foreground hover:bg-muted"
@@ -79,7 +80,7 @@ export function CustomDoorConfigurator({ className }: { className?: string }) {
     <Section className={className}>
       <Container>
         <div className="max-w-2xl">
-          <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-accent">
+          <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-accent-text">
             <span className="inline-block size-1.5 rounded-full bg-accent" aria-hidden="true" />
             Configurator
           </p>
@@ -114,6 +115,7 @@ export function CustomDoorConfigurator({ className }: { className?: string }) {
                     key={option.slug}
                     type="button"
                     onClick={() => setFinish(option.slug)}
+                    aria-pressed={finish === option.slug}
                     className={cn(
                       "flex items-center gap-2 rounded-full border py-1.5 pl-1.5 pr-4 text-sm font-medium transition-colors",
                       finish === option.slug ? "border-accent bg-accent/10" : "border-border hover:bg-muted"
@@ -148,7 +150,7 @@ export function CustomDoorConfigurator({ className }: { className?: string }) {
           </div>
 
           <div className="h-fit rounded-2xl border border-border bg-card p-6 lg:sticky lg:top-24">
-            <p className="text-sm font-semibold uppercase tracking-widest text-accent">Sumarul selecției tale</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-accent-text">Sumarul selecției tale</p>
             <dl className="mt-4 flex flex-col gap-3 text-sm">
               <div className="flex items-center justify-between gap-4">
                 <dt className="text-muted-foreground">Dimensiune</dt>

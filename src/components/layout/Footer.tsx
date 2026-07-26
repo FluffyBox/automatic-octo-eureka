@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { footerQuickLinks, footerServiceLinks, footerLegalLinks } from "@/lib/nav";
 import { siteConfig, telHref, mailtoHref } from "@/lib/site-config";
+import { resetCookieConsent } from "@/lib/use-cookie-consent";
 
 export function Footer() {
   return (
@@ -71,6 +74,15 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            <li>
+              <button
+                type="button"
+                onClick={resetCookieConsent}
+                className="text-dark-foreground/80 hover:text-accent"
+              >
+                Setări cookie-uri
+              </button>
+            </li>
           </ul>
         </div>
       </Container>
@@ -78,8 +90,9 @@ export function Footer() {
       <div className="border-t border-dark-foreground/10 py-6">
         <Container className="flex flex-col items-center justify-between gap-2 text-xs text-dark-foreground/50 sm:flex-row">
           <p>
-            © {new Date().getFullYear()} {siteConfig.brandName} | {siteConfig.legalName}. Toate
-            drepturile rezervate.
+            © {new Date().getFullYear()} {siteConfig.brandName} | {siteConfig.legalName}, Reg.
+            Com. {siteConfig.registrationNumber}, CUI {siteConfig.vatId}. Toate drepturile
+            rezervate.
           </p>
         </Container>
       </div>

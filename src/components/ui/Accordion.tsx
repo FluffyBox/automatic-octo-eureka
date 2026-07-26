@@ -13,7 +13,7 @@ export function Accordion({ items }: { items: AccordionItem[] }) {
           <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-primary marker:content-none">
             <span>{item.question}</span>
             <ChevronDown
-              className="size-5 shrink-0 text-accent transition-transform duration-200 group-open:rotate-180"
+              className="size-5 shrink-0 text-accent-text transition-transform duration-200 group-open:rotate-180"
               aria-hidden="true"
             />
           </summary>

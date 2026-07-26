@@ -42,6 +42,7 @@ export default function RootLayout({
     "@type": "HomeAndConstructionBusiness",
     name: siteConfig.brandName,
     legalName: siteConfig.legalName,
+    vatID: siteConfig.vatId,
     url: siteConfig.url,
     telephone: siteConfig.phone,
     email: siteConfig.email,
@@ -58,9 +59,17 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-accent-foreground"
+        >
+          Sari la conținutul principal
+        </a>
         <TopBar />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
         <Footer />
         <WhatsappButton />
         <ContactPopup />

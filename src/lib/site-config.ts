@@ -3,6 +3,9 @@
 export const siteConfig = {
   brandName: "Parquet Doors",
   legalName: "CMG International SRL",
+  // PLACEHOLDER — replace with the real trade register number (Nr. Reg. Com.) and CUI/VAT id before launch.
+  registrationNumber: "J00/0000/0000",
+  vatId: "RO00000000",
   url: "https://www.parchet-usi.ro", // canonical production domain (parket-usi.ro redirects here)
   phone: "021 322 7057", // from Google Business Profile
   phoneHref: "+40213227057", // from Google Business Profile (E.164 format for tel: links)
