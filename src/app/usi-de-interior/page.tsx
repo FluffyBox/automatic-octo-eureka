@@ -4,11 +4,32 @@ import { PageHero } from "@/components/sections/PageHero";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
+import { JsonLd } from "@/components/JsonLd";
+import { productSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/usi-de-interior" },
   title: "Uși de interior pentru locuințe",
   description: "Descoperă modele de uși de interior pentru amenajări moderne, clasice sau minimaliste. Consultanță, măsurători și montaj disponibile.",
 };
+
+// Offer tiers — keep in sync with the PricingSection on the homepage.
+const doorProductSchema = productSchema({
+  name: "Uși de interior Parquet Doors",
+  description:
+    "Uși de interior în finisaje de stejar, wenge, nuc și cireș, disponibile ca panou simplu, ușă completă cu toc și pervaz, sau pachet complet cu montaj.",
+  image: "/images/usi/stejar-auriu/stejar-auriu-06.webp",
+  offers: [
+    { name: "Ușă simplă", description: "Panou de ușă, fără toc și pervaz.", price: 750 },
+    { name: "Ușă completă", description: "Ușă cu toc, pervaz și accesorii incluse.", price: 1150 },
+    { name: "Pachet cu montaj", description: "Ușă completă, măsurători și montaj profesionist.", price: 1450 },
+  ],
+});
+
+const doorBreadcrumb = breadcrumbSchema([
+  { name: "Acasă", path: "" },
+  { name: "Uși de interior", path: "/usi-de-interior" },
+]);
 
 const finishes = [
   {
@@ -40,6 +61,7 @@ const finishes = [
 export default function UsiDeInteriorPage() {
   return (
     <>
+      <JsonLd data={[doorProductSchema, doorBreadcrumb]} />
       <PageHero
         title="Uși de interior potrivite stilului casei tale"
         description="Descoperă opțiuni pentru diferite tipuri de amenajări și solicită ajutor pentru alegerea modelului, finisajului și configurației potrivite."

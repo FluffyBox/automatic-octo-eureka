@@ -2,30 +2,40 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { getAllPosts } from "@/lib/posts";
 
-const staticRoutes = [
-  "",
-  "/despre-noi",
-  "/usi-de-interior",
-  "/structura-usilor",
-  "/servicii",
-  "/servicii/consultanta-masuratori",
-  "/servicii/montaj",
-  "/proiecte",
-  "/intrebari-frecvente",
-  "/blog",
-  "/oferta",
-  "/contact",
+// Stable "last significant content update" date for static pages.
+// Bump this when you meaningfully change static page content, rather than
+// letting every build reset lastModified to now (which Google learns to ignore).
+const STATIC_LAST_MODIFIED = new Date("2026-07-26");
+
+// [route, priority] — priority is a relative hint (home/commercial pages first).
+const staticRoutes: Array<[string, number]> = [
+  ["", 1.0],
+  ["/usi-de-interior", 0.9],
+  ["/oferta", 0.9],
+  ["/servicii", 0.8],
+  ["/servicii/consultanta-masuratori", 0.7],
+  ["/servicii/montaj", 0.7],
+  ["/structura-usilor", 0.6],
+  ["/proiecte", 0.6],
+  ["/despre-noi", 0.6],
+  ["/contact", 0.7],
+  ["/intrebari-frecvente", 0.6],
+  ["/blog", 0.6],
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
+  const staticEntries: MetadataRoute.Sitemap = staticRoutes.map(([route, priority]) => ({
     url: `${siteConfig.url}${route}`,
-    lastModified: new Date(),
+    lastModified: STATIC_LAST_MODIFIED,
+    changeFrequency: "monthly",
+    priority,
   }));
 
   const postEntries: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
     url: `${siteConfig.url}/blog/${post.slug}`,
     lastModified: new Date(post.date),
+    changeFrequency: "yearly",
+    priority: 0.5,
   }));
 
   return [...staticEntries, ...postEntries];

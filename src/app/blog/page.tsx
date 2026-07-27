@@ -8,6 +8,7 @@ import { PostCard } from "@/components/blog/PostCard";
 import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/blog" },
   title: "Sfaturi despre uși de interior | Blog",
   description: "Ghiduri și recomandări despre alegerea, măsurarea, întreținerea și montarea ușilor de interior.",
 };

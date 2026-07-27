@@ -5,6 +5,7 @@ import { CardGrid } from "@/components/sections/CardGrid";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/servicii" },
   title: "Servicii",
   description: "Consultanță, măsurători, montaj și asistență pentru alegerea modelului de ușă potrivit locuinței tale.",
 };

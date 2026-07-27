@@ -8,6 +8,7 @@ import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/contact" },
   title: "Contact și cereri de ofertă",
   description: "Contactează Parquet Doors pentru uși de interior, consultanță, măsurători și montaj. Solicită o ofertă personalizată.",
 };

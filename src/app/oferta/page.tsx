@@ -5,6 +5,7 @@ import { Section, SectionHeading } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/oferta" },
   title: "Solicită o ofertă",
   description: "Spune-ne câte uși ai nevoie, ce stil preferi și unde se află proiectul. Îți pregătim o ofertă adaptată cerințelor tale.",
 };

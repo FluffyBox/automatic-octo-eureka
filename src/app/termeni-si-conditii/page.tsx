@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/termeni-si-conditii" },
   title: "Termeni și condiții",
 };
 

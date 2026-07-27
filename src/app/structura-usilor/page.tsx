@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/structura-usilor" },
   title: "Structura ușilor de interior",
   description: "Materiale, finisaje și componente ale ușilor de interior Parquet Doors: foaie de ușă, toc, căptușeală, pervazuri și accesorii.",
 };

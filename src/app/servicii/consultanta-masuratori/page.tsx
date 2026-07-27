@@ -3,15 +3,25 @@ import { PageHero } from "@/components/sections/PageHero";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/servicii/consultanta-masuratori" },
   title: "Consultanță și măsurători pentru uși",
   description: "Primește recomandări pentru alegerea ușilor și programează măsurătorile necesare înainte de comandă și montaj.",
 };
 
+const breadcrumb = breadcrumbSchema([
+  { name: "Acasă", path: "" },
+  { name: "Servicii", path: "/servicii" },
+  { name: "Consultanță și măsurători", path: "/servicii/consultanta-masuratori" },
+]);
+
 export default function ConsultantaMasuratoriPage() {
   return (
     <>
+      <JsonLd data={breadcrumb} />
       <PageHero
         title="Alege corect înainte de a comanda"
         description="Prin consultanță și măsurători, stabilim ce soluții se potrivesc locuinței tale și verificăm informațiile tehnice necesare proiectului."

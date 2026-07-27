@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/Section";
 import { Container as C } from "@/components/ui/Container";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/despre-noi" },
   title: "Despre noi",
   description: "Află mai multe despre Parquet Doors și serviciile de consultanță, măsurători și montaj pentru uși de interior.",
 };

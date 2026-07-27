@@ -8,6 +8,9 @@ import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { CtaBanner } from "@/components/sections/CtaBanner";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
+import { siteConfig, canonicalUrl } from "@/lib/site-config";
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -24,6 +27,14 @@ export async function generateMetadata({
   return {
     title: post.meta.title,
     description: post.meta.excerpt,
+    alternates: { canonical: `/blog/${slug}` },
+    openGraph: {
+      type: "article",
+      title: post.meta.title,
+      description: post.meta.excerpt,
+      url: `/blog/${slug}`,
+      publishedTime: new Date(post.meta.date).toISOString(),
+    },
   };
 }
 
@@ -42,8 +53,28 @@ export default async function BlogPostPage({
     year: "numeric",
   });
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.meta.title,
+    description: post.meta.excerpt,
+    image: `${siteConfig.url}${post.meta.cover}`,
+    datePublished: new Date(post.meta.date).toISOString(),
+    articleSection: post.meta.category,
+    mainEntityOfPage: canonicalUrl(`/blog/${slug}`),
+    author: { "@type": "Organization", name: siteConfig.brandName },
+    publisher: { "@id": `${siteConfig.url}/#organization` },
+  };
+
+  const breadcrumb = breadcrumbSchema([
+    { name: "Acasă", path: "" },
+    { name: "Blog", path: "/blog" },
+    { name: post.meta.title, path: `/blog/${slug}` },
+  ]);
+
   return (
     <>
+      <JsonLd data={[articleSchema, breadcrumb]} />
       <Section className="pb-0">
         <Container className="max-w-3xl">
           <Link

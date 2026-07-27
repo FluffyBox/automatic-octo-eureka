@@ -4,6 +4,7 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/politica-de-cookie-uri" },
   title: "Politica de cookie-uri",
 };
 

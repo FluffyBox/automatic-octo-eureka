@@ -4,8 +4,11 @@ import { CtaBanner } from "@/components/sections/CtaBanner";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Accordion } from "@/components/ui/Accordion";
+import { JsonLd } from "@/components/JsonLd";
+import { faqSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/intrebari-frecvente" },
   title: "Întrebări frecvente",
   description: "Răspunsuri la cele mai frecvente întrebări despre uși de interior, măsurători, montaj, garanție și livrare.",
 };
@@ -65,6 +68,7 @@ const faqs = [
 export default function IntrebariFrecventePage() {
   return (
     <>
+      <JsonLd data={faqSchema(faqs)} />
       <PageHero
         title="Idei și sfaturi pentru alegerea ușilor de interior"
         description="Descoperă informații utile despre modele, finisaje, măsurători, montaj și integrarea ușilor în designul locuinței."

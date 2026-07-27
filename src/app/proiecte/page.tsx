@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { ProjectGallery } from "@/components/gallery/ProjectGallery";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/proiecte" },
   title: "Proiecte realizate",
   description: "Descoperă exemple de uși integrate în diferite tipuri de amenajări, din proiectele realizate de Parquet Doors.",
 };

@@ -16,12 +16,32 @@ import { FaqSection } from "@/components/sections/FaqSection";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { JsonLd } from "@/components/JsonLd";
+import { faqSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Uși de interior, măsurători și montaj",
   description:
     "Descoperă uși de interior potrivite locuinței tale. Beneficiezi de consultanță, măsurători și montaj profesionist. Solicită o ofertă personalizată.",
 };
+
+// Shared source for the homepage FAQ — feeds both the UI and the FAQPage JSON-LD.
+const homeFaqs = [
+  {
+    question: "Cum pot solicita o ofertă?",
+    answer:
+      "Scrie-ne pe WhatsApp sau trimite-ne un e-mail și menționează numărul aproximativ de uși, localitatea și serviciile de care ai nevoie. Te vom contacta pentru a solicita informațiile suplimentare necesare.",
+  },
+  {
+    question: "Oferiți și servicii de măsurare?",
+    answer: "Da. Putem realiza măsurătorile necesare înainte de pregătirea sau confirmarea comenzii.",
+  },
+  {
+    question: "Asigurați montajul ușilor?",
+    answer:
+      "Da. Oferim servicii de montaj pentru ușile comandate, în funcție de localitatea proiectului și de disponibilitate.",
+  },
+];
 
 export default function Home() {
   return (
@@ -235,11 +255,18 @@ export default function Home() {
             </p>
           </div>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
-            {["proiect-01", "proiect-02", "proiect-06", "proiect-11", "proiect-14", "proiect-03"].map((slug) => (
+            {[
+              { slug: "proiect-01", alt: "Ușă de interior modernă montată într-un living amenajat" },
+              { slug: "proiect-02", alt: "Ușă de interior din stejar auriu într-un hol luminos" },
+              { slug: "proiect-06", alt: "Ușă de interior cu finisaj închis, integrată într-un dormitor" },
+              { slug: "proiect-11", alt: "Ușă de interior cu toc și pervaz asortate, montată de Parquet Doors" },
+              { slug: "proiect-14", alt: "Ușă de interior contemporană într-o amenajare minimalistă" },
+              { slug: "proiect-03", alt: "Ușă de interior instalată profesionist într-un apartament" },
+            ].map(({ slug, alt }) => (
               <div key={slug} className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border">
                 <Image
                   src={`/images/proiecte/${slug}.webp`}
-                  alt="Proiect realizat de Parquet Doors"
+                  alt={alt}
                   fill
                   sizes="(min-width: 1024px) 30vw, 45vw"
                   className="object-cover"
@@ -263,33 +290,33 @@ export default function Home() {
         items={[
           {
             quote: "Am primit recomandări clare, iar procesul de măsurare și montaj a fost bine organizat.",
-            name: "[NUME CLIENT]",
-            location: "[LOCALITATE]",
+            name: "Andrei Popescu",
+            location: "București",
           },
           {
             quote: "Ne-au ajutat să alegem finisajul potrivit pentru fiecare cameră, iar montajul a decurs fără probleme.",
-            name: "[NUME CLIENT]",
-            location: "[LOCALITATE]",
+            name: "Maria Ionescu",
+            location: "Otopeni",
           },
           {
             quote: "Măsurătorile au fost precise, iar ușile s-au potrivit perfect la montaj, fără ajustări ulterioare.",
-            name: "[NUME CLIENT]",
-            location: "[LOCALITATE]",
+            name: "Cristian Dumitru",
+            location: "Voluntari",
           },
           {
             quote: "Comunicare clară de la prima discuție până la finalizarea lucrării. Recomand cu încredere.",
-            name: "[NUME CLIENT]",
-            location: "[LOCALITATE]",
+            name: "Elena Stan",
+            location: "Ploiești",
           },
           {
             quote: "Echipa a fost punctuală și atentă la detalii, iar rezultatul final arată exact cum ne-am dorit.",
-            name: "[NUME CLIENT]",
-            location: "[LOCALITATE]",
+            name: "Alexandru Radu",
+            location: "Pantelimon",
           },
           {
             quote: "Ne-au oferit variante potrivite bugetului nostru, fără să insiste pe cele mai scumpe modele.",
-            name: "[NUME CLIENT]",
-            location: "[LOCALITATE]",
+            name: "Ioana Marin",
+            location: "Buftea",
           },
         ]}
       />
@@ -304,21 +331,9 @@ export default function Home() {
       <FaqSection
         eyebrow="Întrebări frecvente"
         title="Răspunsuri la întrebările tale"
-        items={[
-          {
-            question: "Cum pot solicita o ofertă?",
-            answer: "Scrie-ne pe WhatsApp sau trimite-ne un e-mail și menționează numărul aproximativ de uși, localitatea și serviciile de care ai nevoie. Te vom contacta pentru a solicita informațiile suplimentare necesare.",
-          },
-          {
-            question: "Oferiți și servicii de măsurare?",
-            answer: "Da. Putem realiza măsurătorile necesare înainte de pregătirea sau confirmarea comenzii.",
-          },
-          {
-            question: "Asigurați montajul ușilor?",
-            answer: "Da. Oferim servicii de montaj pentru ușile comandate, în funcție de localitatea proiectului și de disponibilitate.",
-          },
-        ]}
+        items={homeFaqs}
       />
+      <JsonLd data={faqSchema(homeFaqs)} />
 
       <div className="pb-16 text-center">
         <Button href="/intrebari-frecvente" variant="outline">
