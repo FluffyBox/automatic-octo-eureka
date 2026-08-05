@@ -13,16 +13,16 @@ export const metadata: Metadata = {
   description: "Descoperă modele de uși de interior pentru amenajări moderne, clasice sau minimaliste. Consultanță, măsurători și montaj disponibile.",
 };
 
-// Offer tiers — keep in sync with the PricingSection on the homepage.
+// Offer tiers — keep in sync with the price list in src/lib/pricing.ts.
 const doorProductSchema = productSchema({
   name: "Uși de interior Parquet Doors",
   description:
-    "Uși de interior în finisaje de stejar, wenge, nuc și cireș, disponibile ca panou simplu, ușă completă cu toc și pervaz, sau pachet complet cu montaj.",
+    "Uși de interior în finisaje de stejar, wenge, nuc și cireș, disponibile cu toc plin, toc decupat, stratificate sau glisante.",
   image: "/images/usi/stejar-auriu/stejar-auriu-06.webp",
   offers: [
-    { name: "Ușă simplă", description: "Panou de ușă, fără toc și pervaz.", price: 750 },
-    { name: "Ușă completă", description: "Ușă cu toc, pervaz și accesorii incluse.", price: 1150 },
-    { name: "Pachet cu montaj", description: "Ușă completă, măsurători și montaj profesionist.", price: 1450 },
+    { name: "Ușă cu toc plină", description: "Ușă de interior cu toc plin.", price: 1850 },
+    { name: "Ușă stratificată", description: "Ușă de interior stratificată.", price: 2450 },
+    { name: "Ușă glisantă masivă", description: "Ușă glisantă masivă de interior.", price: 2650 },
   ],
 });
 

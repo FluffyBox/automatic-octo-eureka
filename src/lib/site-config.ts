@@ -7,12 +7,10 @@ export const siteConfig = {
   registrationNumber: "J00/0000/0000",
   vatId: "RO00000000",
   url: "https://www.parchet-usi.ro", // canonical production domain (parket-usi.ro redirects here)
-  phone: "021 322 7057", // from Google Business Profile
-  phoneHref: "+40213227057", // from Google Business Profile (E.164 format for tel: links)
-  email: "placeholder@mail.com", // PLACEHOLDER — not listed on the Google Business Profile
-  // PLACEHOLDER — the Google Business phone (021...) is a Bucharest landline, not WhatsApp-capable.
-  // Set this to a real mobile number once available.
-  whatsappNumber: "40700000000",
+  phone: "0722 261 712",
+  phoneHref: "+40722261712", // E.164 format for tel: links
+  email: "cmg_int@yahoo.com",
+  whatsappNumber: "40722261712",
   address: "Strada Vitejilor 29, 031525 București", // from Google Business Profile
   // Structured address (used for LocalBusiness JSON-LD). Keep in sync with `address` above.
   addressParts: {
@@ -25,8 +23,9 @@ export const siteConfig = {
   hours: "Luni - Vineri, 09:00 - 18:00", // PLACEHOLDER — Google listing only confirms opening time (09:00), not full schedule
   // Machine-readable opening hours for JSON-LD (schema.org OpeningHoursSpecification / string form).
   openingHours: "Mo-Fr 09:00-18:00",
-  // Indicative price band for the LocalBusiness (RON). Derived from the pricing tiers (750–1450 lei).
-  priceRange: "750–1450 RON",
+  // Indicative price band for the LocalBusiness (RON). Range of standalone door prices
+  // (1850–2650 lei); excludes per-mp (debara) and per-set (pervaz) line items.
+  priceRange: "1850–2650 RON",
   areaServed: "București și împrejurimi",
   googleRating: { value: 5.0, count: 6 }, // from Google Business Profile ("Parchet Uși | CMG International SRL")
   socialLinks: {
@@ -40,25 +39,19 @@ export const siteConfig = {
 export const placeholderFields: Array<keyof typeof siteConfig> = [
   "registrationNumber",
   "vatId",
-  "email",
-  "whatsappNumber",
 ];
 
 /** True when any launch-blocking placeholder value is still present. */
 export function hasPlaceholderContact(): boolean {
-  return (
-    siteConfig.email.includes("placeholder") ||
-    siteConfig.whatsappNumber === "40700000000" ||
-    siteConfig.vatId === "RO00000000"
-  );
+  return siteConfig.vatId === "RO00000000";
 }
 
 // Warn loudly in development if placeholder business data is still in place.
 if (process.env.NODE_ENV !== "production" && hasPlaceholderContact()) {
   console.warn(
-    "[site-config] PLACEHOLDER business data detected (email/WhatsApp/VAT). " +
+    "[site-config] PLACEHOLDER business data detected (Reg. Com. / VAT). " +
       "Replace the placeholder fields in src/lib/site-config.ts before launch — " +
-      "WhatsApp/email leads and the LocalBusiness schema will be wrong until you do."
+      "the LocalBusiness schema and footer legal line will be wrong until you do."
   );
 }
 

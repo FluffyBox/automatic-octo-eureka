@@ -8,12 +8,11 @@ import { CardGrid } from "@/components/sections/CardGrid";
 import { ServicesShowcase } from "@/components/sections/ServicesShowcase";
 import { CustomDoorConfigurator } from "@/components/sections/CustomDoorConfigurator";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
-import { PricingSection } from "@/components/sections/PricingSection";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { FaqSection } from "@/components/sections/FaqSection";
-import { Section } from "@/components/ui/Section";
+import { Section, SectionHeading } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { JsonLd } from "@/components/JsonLd";
@@ -203,39 +202,37 @@ export default function Home() {
         }}
       />
 
-      <PricingSection
-        eyebrow="Prețuri"
-        title="Lista de prețuri orientative"
-        description="Alege pachetul potrivit nevoilor tale. Prețul final se confirmă întotdeauna după măsurători."
-        note="Prețurile sunt orientative și pot varia în funcție de dimensiuni, finisaj și complexitatea proiectului. Prețul final se confirmă după măsurători."
-        plans={[
-          {
-            name: "Ușă simplă",
-            price: "de la 750 lei",
-            unit: "/ bucată",
-            description: "Panou de ușă, fără toc și pervaz.",
-            features: ["Finisaj la alegere", "Foaie de ușă montată pe balamale", "Fără toc și pervaz"],
-            cta: { label: "Solicită ofertă", href: "/oferta" },
-          },
-          {
-            name: "Ușă completă",
-            price: "de la 1150 lei",
-            unit: "/ bucată",
-            description: "Ușă cu toc, pervaz și accesorii incluse.",
-            features: ["Finisaj la alegere", "Toc și pervaz incluse", "Accesorii și feronerie standard"],
-            highlighted: true,
-            cta: { label: "Solicită ofertă", href: "/oferta" },
-          },
-          {
-            name: "Pachet cu montaj",
-            price: "de la 1450 lei",
-            unit: "/ bucată",
-            description: "Ușă completă, măsurători și montaj profesionist.",
-            features: ["Ușă, toc și pervaz incluse", "Măsurători înainte de comandă", "Montaj profesionist"],
-            cta: { label: "Solicită ofertă", href: "/oferta" },
-          },
-        ]}
-      />
+      <Section className="bg-muted/40">
+        <Container>
+          <SectionHeading
+            eyebrow="Prețuri"
+            title="Prețuri orientative pentru uși de interior"
+            description="Prețul final se confirmă întotdeauna după măsurători. Vezi lista completă cu toate variantele, accesoriile și montajul."
+            align="center"
+            className="mx-auto"
+          />
+
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {[
+              { name: "Ușă cu toc plină", price: "1850 lei", description: "Cea mai accesibilă variantă, cu toc și feronerie incluse." },
+              { name: "Ușă stratificată", price: "2450 lei", description: "Finisaj rezistent, potrivit locuințelor cu trafic ridicat." },
+              { name: "Montaj în București", price: "305 lei", description: "Montaj profesionist, realizat după măsurători." },
+            ].map((item) => (
+              <div key={item.name} className="flex flex-col rounded-2xl border border-border bg-card p-8 text-center">
+                <h3 className="font-heading text-lg font-semibold text-primary">{item.name}</h3>
+                <p className="mt-4 font-heading text-3xl font-bold text-primary">{item.price}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <Button href="/preturi" variant="primary">
+              Vezi lista completă de prețuri
+            </Button>
+          </div>
+        </Container>
+      </Section>
 
       <Section>
         <Container>

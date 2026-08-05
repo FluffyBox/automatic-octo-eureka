@@ -33,11 +33,9 @@ Update these before going live:
 |---|---|---|
 | `registrationNumber` | `J00/0000/0000` | Trade register number — appears in Organization JSON-LD |
 | `vatId` | `RO00000000` | CUI/VAT id — appears in Organization + LocalBusiness JSON-LD |
-| `email` | `placeholder@mail.com` | Used in "Trimite un e-mail" buttons **and** the JSON-LD `email` |
-| `whatsappNumber` | `40700000000` | Digits only, `wa.me` format — used by the floating WhatsApp button, all "Solicită o ofertă" CTAs, the configurator, and the delayed popup |
 | `socialLinks` | empty | Fill in to populate schema.org `sameAs` (and link in the UI) |
 
-> `phone`, `address`, and `url` (`https://www.parchet-usi.ro`) are already real (from the Google Business Profile).
+> `phone`, `email`, `whatsappNumber`, `address`, and `url` (`https://www.parchet-usi.ro`) are already real.
 > A dev-mode console warning fires while any of the placeholders above remain (`hasPlaceholderContact()` in `site-config.ts`).
 
 Also still needed before launch:

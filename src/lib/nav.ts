@@ -8,6 +8,7 @@ export const navLinks: NavLink[] = [
   { label: "Acasă", href: "/" },
   { label: "Despre noi", href: "/despre-noi" },
   { label: "Uși de interior", href: "/usi-de-interior" },
+  { label: "Prețuri", href: "/preturi" },
   { label: "Structura ușilor", href: "/structura-usilor" },
   {
     label: "Servicii",
@@ -29,6 +30,7 @@ export const footerQuickLinks: NavLink[] = [
   { label: "Acasă", href: "/" },
   { label: "Despre noi", href: "/despre-noi" },
   { label: "Uși de interior", href: "/usi-de-interior" },
+  { label: "Prețuri", href: "/preturi" },
   { label: "Servicii", href: "/servicii" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },

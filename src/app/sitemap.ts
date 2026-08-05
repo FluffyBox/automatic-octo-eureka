@@ -5,13 +5,14 @@ import { getAllPosts } from "@/lib/posts";
 // Stable "last significant content update" date for static pages.
 // Bump this when you meaningfully change static page content, rather than
 // letting every build reset lastModified to now (which Google learns to ignore).
-const STATIC_LAST_MODIFIED = new Date("2026-07-26");
+const STATIC_LAST_MODIFIED = new Date("2026-08-05");
 
 // [route, priority] — priority is a relative hint (home/commercial pages first).
 const staticRoutes: Array<[string, number]> = [
   ["", 1.0],
   ["/usi-de-interior", 0.9],
   ["/oferta", 0.9],
+  ["/preturi", 0.8],
   ["/servicii", 0.8],
   ["/servicii/consultanta-masuratori", 0.7],
   ["/servicii/montaj", 0.7],
