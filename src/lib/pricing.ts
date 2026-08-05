@@ -28,6 +28,10 @@ export const priceCategories: PriceCategory[] = [
   },
 ];
 
+export function priceValue(item: PriceItem): number {
+  return parseInt(item.price, 10);
+}
+
 export const pricingNotes = [
   "Toate prețurile includ TVA.",
   "Feronerie (balama / broască / mâner) inclusă în preț.",

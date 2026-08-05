@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { cn } from "@/lib/cn";
 import { whatsappHref } from "@/lib/site-config";
+import { priceCategories, priceValue } from "@/lib/pricing";
 
 const widths = ["70 cm", "80 cm", "90 cm"];
 const heights = ["200 cm", "210 cm"];
@@ -17,9 +18,11 @@ const finishes = [
   { slug: "decupaj-decorativ", name: "Decupaj decorativ", image: "/images/usi/decupaj-decorativ/decupaj-01.webp" },
 ];
 
-const doorTypes = ["Plină", "Cu geam"];
+// Real door models — kept in sync with the "Uși de interior" category in src/lib/pricing.ts.
+const doorModels = priceCategories.find((c) => c.title === "Uși de interior")!.items;
 const openings = ["Stânga", "Dreapta"];
-const frameOptions = ["Da, inclus", "Nu, doar ușa"];
+const PAINT_SURCHARGE = 450;
+const MONTAJ_BUCURESTI = 305;
 
 function PillOption({
   label,
@@ -64,16 +67,20 @@ export function CustomDoorConfigurator({ className }: { className?: string }) {
   const [width, setWidth] = useState(widths[1]);
   const [height, setHeight] = useState(heights[1]);
   const [finish, setFinish] = useState(finishes[0].slug);
-  const [doorType, setDoorType] = useState(doorTypes[0]);
+  const [doorModel, setDoorModel] = useState(doorModels[0].name);
   const [opening, setOpening] = useState(openings[0]);
-  const [frame, setFrame] = useState(frameOptions[0]);
+  const [painted, setPainted] = useState(false);
+  const [montajBucuresti, setMontajBucuresti] = useState(false);
 
   const selectedFinish = finishes.find((item) => item.slug === finish) ?? finishes[0];
+  const selectedModel = doorModels.find((item) => item.name === doorModel) ?? doorModels[0];
+
+  const total = priceValue(selectedModel) + (painted ? PAINT_SURCHARGE : 0) + (montajBucuresti ? MONTAJ_BUCURESTI : 0);
 
   const message = useMemo(
     () =>
-      `Bună ziua! Doresc o ofertă pentru o ușă la comandă: dimensiune ${width} x ${height}, finisaj ${selectedFinish.name}, tip ${doorType.toLowerCase()}, deschidere ${opening.toLowerCase()}, toc și pervaz: ${frame.toLowerCase()}.`,
-    [width, height, selectedFinish, doorType, opening, frame]
+      `Bună ziua! Doresc o ofertă pentru o ușă la comandă: model ${selectedModel.name} (preț estimat ${total} lei), dimensiune ${width} x ${height}, finisaj ${selectedFinish.name}, deschidere ${opening.toLowerCase()}${painted ? ", ușă vopsită" : ""}${montajBucuresti ? ", montaj în București" : ""}.`,
+    [selectedModel, total, width, height, selectedFinish, opening, painted, montajBucuresti]
   );
 
   return (
@@ -130,9 +137,14 @@ export function CustomDoorConfigurator({ className }: { className?: string }) {
               </div>
             </div>
 
-            <OptionGroup label="Tip ușă">
-              {doorTypes.map((option) => (
-                <PillOption key={option} label={option} active={doorType === option} onClick={() => setDoorType(option)} />
+            <OptionGroup label="Model ușă">
+              {doorModels.map((option) => (
+                <PillOption
+                  key={option.name}
+                  label={`${option.name} · ${option.price}`}
+                  active={doorModel === option.name}
+                  onClick={() => setDoorModel(option.name)}
+                />
               ))}
             </OptionGroup>
 
@@ -142,10 +154,14 @@ export function CustomDoorConfigurator({ className }: { className?: string }) {
               ))}
             </OptionGroup>
 
-            <OptionGroup label="Toc și pervaz">
-              {frameOptions.map((option) => (
-                <PillOption key={option} label={option} active={frame === option} onClick={() => setFrame(option)} />
-              ))}
+            <OptionGroup label="Ușă vopsită">
+              <PillOption label="Da (+450 lei)" active={painted} onClick={() => setPainted(true)} />
+              <PillOption label="Nu" active={!painted} onClick={() => setPainted(false)} />
+            </OptionGroup>
+
+            <OptionGroup label="Montaj în București">
+              <PillOption label="Da (+305 lei)" active={montajBucuresti} onClick={() => setMontajBucuresti(true)} />
+              <PillOption label="Nu" active={!montajBucuresti} onClick={() => setMontajBucuresti(false)} />
             </OptionGroup>
           </div>
 
@@ -161,18 +177,31 @@ export function CustomDoorConfigurator({ className }: { className?: string }) {
                 <dd className="font-medium text-foreground">{selectedFinish.name}</dd>
               </div>
               <div className="flex items-center justify-between gap-4">
-                <dt className="text-muted-foreground">Tip ușă</dt>
-                <dd className="font-medium text-foreground">{doorType}</dd>
+                <dt className="text-muted-foreground">Model</dt>
+                <dd className="font-medium text-foreground">{selectedModel.name}</dd>
               </div>
               <div className="flex items-center justify-between gap-4">
                 <dt className="text-muted-foreground">Deschidere</dt>
                 <dd className="font-medium text-foreground">{opening}</dd>
               </div>
-              <div className="flex items-center justify-between gap-4">
-                <dt className="text-muted-foreground">Toc și pervaz</dt>
-                <dd className="font-medium text-foreground">{frame}</dd>
-              </div>
+              {painted && (
+                <div className="flex items-center justify-between gap-4">
+                  <dt className="text-muted-foreground">Ușă vopsită</dt>
+                  <dd className="font-medium text-foreground">+{PAINT_SURCHARGE} lei</dd>
+                </div>
+              )}
+              {montajBucuresti && (
+                <div className="flex items-center justify-between gap-4">
+                  <dt className="text-muted-foreground">Montaj în București</dt>
+                  <dd className="font-medium text-foreground">+{MONTAJ_BUCURESTI} lei</dd>
+                </div>
+              )}
             </dl>
+
+            <div className="mt-6 flex items-baseline justify-between gap-4 border-t border-border pt-4">
+              <p className="text-sm font-semibold text-primary">Preț estimat</p>
+              <p className="font-heading text-2xl font-bold text-primary">{total} lei</p>
+            </div>
 
             <a
               href={whatsappHref(message)}
