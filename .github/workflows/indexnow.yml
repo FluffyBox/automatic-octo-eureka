@@ -1,0 +1,42 @@
+name: IndexNow
+
+# Notifies Bing/Yandex/Seznam/Naver that pages changed.
+#
+# Trigger is the *deployment* finishing, not a schedule. That matters: IndexNow
+# is meant to be pinged when content actually changes, and a deployment_status
+# event only fires once Vercel reports the deploy live — so we can never submit
+# URLs before the new content is actually served.
+#
+# Also runnable by hand from the Actions tab (Run workflow), which is the
+# closest thing to a "run it now" button.
+on:
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      paths:
+        description: "Space-separated paths to submit (blank = every URL in the sitemap)"
+        required: false
+        default: ""
+
+jobs:
+  submit:
+    # Vercel names the production environment "Production" and previews
+    # "Preview – <project>". Matching on "roduction" tolerates either casing
+    # while still excluding previews — the script only ever targets the
+    # production host, so submitting on a preview deploy would be wasted quota.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       contains(github.event.deployment_status.environment, 'roduction'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # No `npm ci` — the script uses only the Node standard library, so
+      # installing the whole dependency tree here would be pure latency.
+      - name: Submit URLs to IndexNow
+        run: node scripts/indexnow.mjs ${{ github.event.inputs.paths }}

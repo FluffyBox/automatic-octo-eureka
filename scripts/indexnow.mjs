@@ -26,8 +26,28 @@ const ENDPOINT = "https://api.indexnow.org/IndexNow";
 // IndexNow rejects a submission outright if any URL is on a different host, so
 // bad input costs the whole batch. Validate before sending.
 function normalise(input) {
+  // Git Bash on Windows rewrites a leading-slash argument into a Windows path,
+  // so `node scripts/indexnow.mjs /preturi` arrives as
+  // "C:/Program Files/Git/preturi". Prefixing the origin would then produce a
+  // same-host but nonsense URL, which passes the host check below — so catch it
+  // here instead of silently submitting garbage.
+  if (/^[A-Za-z]:[\\/]/.test(input) || input.includes("\\")) {
+    throw new Error(
+      `"${input}" looks like a Windows path, not a site path.\n` +
+        `  Git Bash rewrites leading slashes. Either drop the slash:\n` +
+        `    node scripts/indexnow.mjs preturi\n` +
+        `  or disable the rewrite:\n` +
+        `    MSYS_NO_PATHCONV=1 node scripts/indexnow.mjs /preturi`
+    );
+  }
+
   const url = input.startsWith("http") ? input : `${ORIGIN}${input.startsWith("/") ? "" : "/"}${input}`;
-  const parsed = new URL(url);
+  let parsed;
+  try {
+    parsed = new URL(url);
+  } catch {
+    throw new Error(`"${input}" is not a valid URL or path.`);
+  }
   if (parsed.host !== HOST) {
     throw new Error(`Refusing to submit "${input}" — host is ${parsed.host}, expected ${HOST}`);
   }
