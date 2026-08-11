@@ -4,7 +4,7 @@ import { CtaBanner } from "@/components/sections/CtaBanner";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { JsonLd } from "@/components/JsonLd";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/servicii/montaj" },
@@ -21,7 +21,7 @@ const breadcrumb = breadcrumbSchema([
 export default function MontajPage() {
   return (
     <>
-      <JsonLd data={breadcrumb} />
+      <JsonLd data={[serviceSchema("/servicii/montaj"), breadcrumb]} />
       <PageHero
         title="Montaj atent pentru un rezultat bine finisat"
         description="Instalarea corectă influențează atât aspectul, cât și funcționarea ușii. Echipa noastră urmărește fiecare etapă pentru un rezultat curat și bine integrat."

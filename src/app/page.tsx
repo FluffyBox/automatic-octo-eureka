@@ -17,30 +17,13 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { JsonLd } from "@/components/JsonLd";
 import { faqSchema } from "@/lib/schema";
+import { homeFaqs } from "@/lib/faq";
 
 export const metadata: Metadata = {
   title: "Uși de interior, măsurători și montaj",
   description:
     "Descoperă uși de interior potrivite locuinței tale. Beneficiezi de consultanță, măsurători și montaj profesionist. Solicită o ofertă personalizată.",
 };
-
-// Shared source for the homepage FAQ — feeds both the UI and the FAQPage JSON-LD.
-const homeFaqs = [
-  {
-    question: "Cum pot solicita o ofertă?",
-    answer:
-      "Scrie-ne pe WhatsApp sau trimite-ne un e-mail și menționează numărul aproximativ de uși, localitatea și serviciile de care ai nevoie. Te vom contacta pentru a solicita informațiile suplimentare necesare.",
-  },
-  {
-    question: "Oferiți și servicii de măsurare?",
-    answer: "Da. Putem realiza măsurătorile necesare înainte de pregătirea sau confirmarea comenzii.",
-  },
-  {
-    question: "Asigurați montajul ușilor?",
-    answer:
-      "Da. Oferim servicii de montaj pentru ușile comandate, în funcție de localitatea proiectului și de disponibilitate.",
-  },
-];
 
 export default function Home() {
   return (

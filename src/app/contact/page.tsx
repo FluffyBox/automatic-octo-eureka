@@ -6,6 +6,8 @@ import { GoogleRatingBadge } from "@/components/sections/GoogleRatingBadge";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/site-config";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
@@ -13,9 +15,23 @@ export const metadata: Metadata = {
   description: "Contactează Parquet Doors pentru uși de interior, consultanță, măsurători și montaj. Solicită o ofertă personalizată.",
 };
 
+const breadcrumb = breadcrumbSchema([
+  { name: "Acasă", path: "" },
+  { name: "Contact", path: "/contact" },
+]);
+
+const page = webPageSchema({
+  type: "ContactPage",
+  name: "Contact și cereri de ofertă",
+  description:
+    "Date de contact, adresă, program de lucru și hartă pentru Parquet Doors — uși de interior în București și Ilfov.",
+  path: "/contact",
+});
+
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={[breadcrumb, page]} />
       <PageHero
         title="Hai să discutăm despre proiectul tău"
         description="Ai nevoie de ajutor pentru alegerea ușilor de interior? Contactează-ne și spune-ne ce tip de proiect ai. Îți vom prezenta pașii necesari pentru a primi o ofertă."

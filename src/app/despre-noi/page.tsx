@@ -3,6 +3,8 @@ import { PageHero } from "@/components/sections/PageHero";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { Section } from "@/components/ui/Section";
 import { Container as C } from "@/components/ui/Container";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/despre-noi" },
@@ -10,9 +12,23 @@ export const metadata: Metadata = {
   description: "Află mai multe despre Parquet Doors și serviciile de consultanță, măsurători și montaj pentru uși de interior.",
 };
 
+const breadcrumb = breadcrumbSchema([
+  { name: "Acasă", path: "" },
+  { name: "Despre noi", path: "/despre-noi" },
+]);
+
+const page = webPageSchema({
+  type: "AboutPage",
+  name: "Despre Parquet Doors",
+  description:
+    "Află mai multe despre Parquet Doors (CMG International SRL) și serviciile de consultanță, măsurători și montaj pentru uși de interior.",
+  path: "/despre-noi",
+});
+
 export default function DespreNoiPage() {
   return (
     <>
+      <JsonLd data={[breadcrumb, page]} />
       <PageHero
         title="Te ajutăm să alegi ușile potrivite pentru casa ta"
         description="Combinăm consultanța, măsurătorile și montajul pentru a oferi clienților rezidențiali un proces simplu și bine organizat."

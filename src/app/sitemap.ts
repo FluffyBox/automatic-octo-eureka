@@ -22,6 +22,11 @@ const staticRoutes: Array<[string, number]> = [
   ["/contact", 0.7],
   ["/intrebari-frecvente", 0.6],
   ["/blog", 0.6],
+  // Legal pages: low priority, but indexing them is a trust signal for both
+  // search engines and AI answer engines assessing business legitimacy.
+  ["/politica-de-confidentialitate", 0.2],
+  ["/politica-de-cookie-uri", 0.2],
+  ["/termeni-si-conditii", 0.2],
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

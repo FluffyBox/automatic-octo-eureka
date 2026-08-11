@@ -7,6 +7,11 @@ export const siteConfig = {
   registrationNumber: "J00/0000/0000",
   vatId: "RO00000000",
   url: "https://www.parchet-usi.ro", // canonical production domain (parket-usi.ro redirects here)
+  // One-sentence entity description. Reused by the JSON-LD Organization /
+  // LocalBusiness / WebSite nodes and by llms.txt, so AI engines get a single
+  // consistent answer to "what is this business".
+  description:
+    "Parquet Doors (CMG International SRL) vinde și montează uși de interior în București și Ilfov, cu servicii de consultanță, măsurători la domiciliu și montaj profesionist.",
   phone: "0722 261 712",
   phoneHref: "+40722261712", // E.164 format for tel: links
   email: "cmg_int@yahoo.com",

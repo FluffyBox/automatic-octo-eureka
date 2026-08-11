@@ -3,6 +3,8 @@ import { MessageSquare, Ruler, Wrench, ListChecks } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { CardGrid } from "@/components/sections/CardGrid";
 import { CtaBanner } from "@/components/sections/CtaBanner";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbSchema, serviceSchema, webPageSchema, SERVICES } from "@/lib/schema";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/servicii" },
@@ -10,9 +12,23 @@ export const metadata: Metadata = {
   description: "Consultanță, măsurători, montaj și asistență pentru alegerea modelului de ușă potrivit locuinței tale.",
 };
 
+const breadcrumb = breadcrumbSchema([
+  { name: "Acasă", path: "" },
+  { name: "Servicii", path: "/servicii" },
+]);
+
+const page = webPageSchema({
+  type: "CollectionPage",
+  name: "Servicii pentru uși de interior",
+  description:
+    "Consultanță, măsurători, montaj și asistență pentru alegerea modelului de ușă potrivit locuinței tale.",
+  path: "/servicii",
+});
+
 export default function ServiciiPage() {
   return (
     <>
+      <JsonLd data={[...SERVICES.map((s) => serviceSchema(s.path)), breadcrumb, page]} />
       <PageHero
         title="Servicii pentru un proces complet și bine organizat"
         description="Te sprijinim de la alegerea soluției potrivite până la instalarea finală."

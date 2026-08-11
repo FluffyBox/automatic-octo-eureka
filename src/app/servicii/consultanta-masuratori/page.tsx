@@ -4,7 +4,7 @@ import { CtaBanner } from "@/components/sections/CtaBanner";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { JsonLd } from "@/components/JsonLd";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/servicii/consultanta-masuratori" },
@@ -21,7 +21,7 @@ const breadcrumb = breadcrumbSchema([
 export default function ConsultantaMasuratoriPage() {
   return (
     <>
-      <JsonLd data={breadcrumb} />
+      <JsonLd data={[serviceSchema("/servicii/consultanta-masuratori"), breadcrumb]} />
       <PageHero
         title="Alege corect înainte de a comanda"
         description="Prin consultanță și măsurători, stabilim ce soluții se potrivesc locuinței tale și verificăm informațiile tehnice necesare proiectului."

@@ -4,7 +4,7 @@ import { CtaBanner } from "@/components/sections/CtaBanner";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { JsonLd } from "@/components/JsonLd";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, offerCatalogSchema, webPageSchema } from "@/lib/schema";
 import { priceCategories, pricingNotes } from "@/lib/pricing";
 
 export const metadata: Metadata = {
@@ -19,10 +19,18 @@ const breadcrumb = breadcrumbSchema([
   { name: "Prețuri", path: "/preturi" },
 ]);
 
+const page = webPageSchema({
+  type: "CollectionPage",
+  name: "Prețuri uși de interior 2026",
+  description:
+    "Lista de prețuri pentru uși de interior, debara, căptușeală, pervaz și montaj. Prețuri actualizate 2026, TVA inclus.",
+  path: "/preturi",
+});
+
 export default function PreturiPage() {
   return (
     <>
-      <JsonLd data={breadcrumb} />
+      <JsonLd data={[offerCatalogSchema(), breadcrumb, page]} />
       <PageHero
         title="Prețuri uși de interior 2026"
         description="Lista completă de prețuri, TVA inclus. Prețul final se confirmă întotdeauna după măsurători."

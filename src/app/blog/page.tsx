@@ -6,6 +6,8 @@ import { Container } from "@/components/ui/Container";
 import { CategoryFilter } from "@/components/blog/CategoryFilter";
 import { PostCard } from "@/components/blog/PostCard";
 import { getAllPosts } from "@/lib/posts";
+import { JsonLd } from "@/components/JsonLd";
+import { blogSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/blog" },
@@ -24,6 +26,16 @@ export default async function BlogIndexPage({
 
   return (
     <>
+      {/* Schema always describes the full, unfiltered listing — the canonical view. */}
+      <JsonLd
+        data={[
+          blogSchema(allPosts),
+          breadcrumbSchema([
+            { name: "Acasă", path: "" },
+            { name: "Blog", path: "/blog" },
+          ]),
+        ]}
+      />
       <PageHero
         title="Idei și sfaturi pentru alegerea ușilor de interior"
         description="Descoperă informații utile despre modele, finisaje, măsurători, montaj și integrarea ușilor în designul locuinței."

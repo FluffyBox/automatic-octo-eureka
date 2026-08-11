@@ -4,6 +4,8 @@ import { CtaBanner } from "@/components/sections/CtaBanner";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { ProjectGallery } from "@/components/gallery/ProjectGallery";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbSchema, imageGallerySchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/proiecte" },
@@ -20,9 +22,23 @@ const projectImages = Array.from({ length: projectCount }, (_, i) => {
   };
 });
 
+const breadcrumb = breadcrumbSchema([
+  { name: "Acasă", path: "" },
+  { name: "Proiecte", path: "/proiecte" },
+]);
+
+const gallery = imageGallerySchema({
+  name: "Proiecte realizate — uși de interior",
+  description:
+    "Fotografii cu uși de interior montate de Parquet Doors în locuințe din București și Ilfov.",
+  path: "/proiecte",
+  images: projectImages,
+});
+
 export default function ProiectePage() {
   return (
     <>
+      <JsonLd data={[gallery, breadcrumb]} />
       <PageHero
         title="Inspirație pentru locuința ta"
         description="Descoperă exemple de uși integrate în diferite tipuri de amenajări și folosește-le ca punct de plecare pentru propriul proiect."
