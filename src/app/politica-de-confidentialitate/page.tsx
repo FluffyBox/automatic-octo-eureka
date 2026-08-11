@@ -20,9 +20,8 @@ export default function PoliticaConfidentialitatePage() {
             <p>
               Operatorul datelor cu caracter personal colectate prin acest website este{" "}
               {siteConfig.legalName}, cu sediul în {siteConfig.address}, înregistrată la Registrul
-              Comerțului cu numărul {siteConfig.registrationNumber}, CUI {siteConfig.vatId}{" "}
-              <em>(date de identificare provizorii, ce vor fi actualizate cu datele reale ale
-              societății)</em>, contact: {siteConfig.email} / {siteConfig.phone}.
+              Comerțului cu numărul {siteConfig.registrationNumber}, CUI {siteConfig.vatId},
+              contact: {siteConfig.email} / {siteConfig.phone}.
             </p>
 
             <h2>Ce date colectăm</h2>

@@ -1,17 +1,20 @@
-// PLACEHOLDER VALUES — replace remaining fields below with real business info before launch.
-// See README.md for the full pre-launch checklist.
+// Business identity. The legal fields below are the real registry values,
+// verified against ANAF (the Romanian tax authority) on 2026-08-11: the record
+// for CUI 22106445 matches this business on both registered address
+// (Str. Vitejilor 29, Sector 3) and phone (0722261712).
 export const siteConfig = {
   brandName: "Parquet Doors",
-  legalName: "CMG International SRL",
-  // PLACEHOLDER — replace with the real trade register number (Nr. Reg. Com.) and CUI/VAT id before launch.
-  registrationNumber: "J00/0000/0000",
-  vatId: "RO00000000",
+  // Exact registered name per ANAF — note it is "…Consult SRL", which is what
+  // must appear on the site for Romanian e-commerce disclosure purposes.
+  legalName: "CMG International Consult SRL",
+  registrationNumber: "J40/13519/2007",
+  vatId: "RO22106445",
   url: "https://www.parchet-usi.ro", // canonical production domain (parket-usi.ro redirects here)
   // One-sentence entity description. Reused by the JSON-LD Organization /
   // LocalBusiness / WebSite nodes and by llms.txt, so AI engines get a single
   // consistent answer to "what is this business".
   description:
-    "Parquet Doors (CMG International SRL) vinde și montează uși de interior în București și Ilfov, cu servicii de consultanță, măsurători la domiciliu și montaj profesionist.",
+    "Parquet Doors (CMG International Consult SRL) vinde și montează uși de interior în București și Ilfov, cu servicii de consultanță, măsurători la domiciliu și montaj profesionist.",
   phone: "0722 261 712",
   phoneHref: "+40722261712", // E.164 format for tel: links
   email: "cmg_int@yahoo.com",
@@ -39,24 +42,25 @@ export const siteConfig = {
   },
 };
 
-// Fields that still hold placeholder values and MUST be replaced before launch.
-// Used to emit a build/runtime warning so they can't ship silently.
+// Fields that still hold unconfirmed values. The legal identifiers (Reg. Com.,
+// CUI) were resolved from the ANAF registry; what remains is data no public
+// registry can settle and that the owner has to confirm.
 export const placeholderFields: Array<keyof typeof siteConfig> = [
-  "registrationNumber",
-  "vatId",
+  "hours", // Google Business Profile only confirms the 09:00 opening time
+  "socialLinks", // no Facebook/Instagram URLs supplied yet
 ];
 
-/** True when any launch-blocking placeholder value is still present. */
+/** True while any unconfirmed business data is still in place. */
 export function hasPlaceholderContact(): boolean {
-  return siteConfig.vatId === "RO00000000";
+  return !siteConfig.socialLinks.facebook && !siteConfig.socialLinks.instagram;
 }
 
-// Warn loudly in development if placeholder business data is still in place.
+// Warn in development while unconfirmed business data remains.
 if (process.env.NODE_ENV !== "production" && hasPlaceholderContact()) {
   console.warn(
-    "[site-config] PLACEHOLDER business data detected (Reg. Com. / VAT). " +
-      "Replace the placeholder fields in src/lib/site-config.ts before launch — " +
-      "the LocalBusiness schema and footer legal line will be wrong until you do."
+    "[site-config] Unconfirmed business data: no social profile URLs are set, " +
+      "so schema.org `sameAs` is omitted. The opening hours beyond 09:00 are " +
+      "also unconfirmed. See placeholderFields in src/lib/site-config.ts."
   );
 }
 

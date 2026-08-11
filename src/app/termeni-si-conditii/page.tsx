@@ -20,9 +20,8 @@ export default function TermeniSiConditiiPage() {
             <p>
               Acest website este operat de {siteConfig.legalName}, cu sediul în{" "}
               {siteConfig.address}, înregistrată la Registrul Comerțului cu numărul{" "}
-              {siteConfig.registrationNumber}, CUI {siteConfig.vatId}{" "}
-              <em>(date de identificare provizorii, ce vor fi actualizate cu datele reale ale
-              societății)</em>, contact: {siteConfig.email} / {siteConfig.phone}.
+              {siteConfig.registrationNumber}, CUI {siteConfig.vatId}, contact:{" "}
+              {siteConfig.email} / {siteConfig.phone}.
             </p>
             <h2>Utilizarea website-ului</h2>
             <p>

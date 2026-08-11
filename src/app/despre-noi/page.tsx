@@ -21,7 +21,7 @@ const page = webPageSchema({
   type: "AboutPage",
   name: "Despre Parquet Doors",
   description:
-    "Află mai multe despre Parquet Doors (CMG International SRL) și serviciile de consultanță, măsurători și montaj pentru uși de interior.",
+    "Află mai multe despre Parquet Doors (CMG International Consult SRL) și serviciile de consultanță, măsurători și montaj pentru uși de interior.",
   path: "/despre-noi",
 });
 
@@ -39,7 +39,7 @@ export default function DespreNoiPage() {
           <h2 className="text-2xl font-semibold text-primary">Povestea companiei</h2>
           <div className="mt-6 space-y-5 leading-relaxed text-muted-foreground">
             <p>
-              Parquet Doors | CMG International SRL oferă soluții pentru clienții care își
+              Parquet Doors | CMG International Consult SRL oferă soluții pentru clienții care își
               amenajează, renovează sau finalizează locuința și au nevoie de uși de interior
               potrivite spațiului lor.
             </p>

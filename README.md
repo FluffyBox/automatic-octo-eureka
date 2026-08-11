@@ -31,12 +31,28 @@ Update these before going live:
 
 | Field | Current value | Notes |
 |---|---|---|
-| `registrationNumber` | `J00/0000/0000` | Trade register number — appears in Organization JSON-LD |
-| `vatId` | `RO00000000` | CUI/VAT id — appears in Organization + LocalBusiness JSON-LD |
 | `socialLinks` | empty | Fill in to populate schema.org `sameAs` (and link in the UI) |
+| `hours` | `Luni - Vineri, 09:00 - 18:00` | Google lists only the 09:00 opening time; the rest is assumed |
 
 > `phone`, `email`, `whatsappNumber`, `address`, and `url` (`https://www.parchet-usi.ro`) are already real.
 > A dev-mode console warning fires while any of the placeholders above remain (`hasPlaceholderContact()` in `site-config.ts`).
+
+### Legal identifiers — resolved
+
+`legalName`, `registrationNumber` and `vatId` were verified against the
+[ANAF](https://webservicesp.anaf.ro/) public registry on 2026-08-11. The record for **CUI 22106445**
+matches this business on registered address (Str. Vitejilor 29, Sector 3) *and* phone (0722261712):
+
+| Field | Value |
+|---|---|
+| `legalName` | CMG International Consult SRL |
+| `registrationNumber` | J40/13519/2007 |
+| `vatId` | RO22106445 (VAT-registered since 2007-07-16) |
+
+> Note the registered name is **CMG International _Consult_ SRL** — the earlier drafts said
+> "CMG International SRL". The registry's principal CAEN code is `6820` (real-estate rental),
+> which does not describe the door business; that is common for long-lived Romanian SRLs, but
+> worth confirming with the owner's accountant that no separate trading entity is in use.
 
 Also still needed before launch:
 

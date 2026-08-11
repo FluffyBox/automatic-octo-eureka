@@ -41,7 +41,7 @@ export default function Home() {
       <AboutSplit
         eyebrow="Despre noi"
         title="Soluții potrivite pentru fiecare locuință"
-        description="Parquet Doors | CMG International SRL oferă uși de interior și servicii de consultanță, măsurători și montaj pentru proiecte rezidențiale. Punem accent pe alegerea corectă a produsului, măsurători bine realizate și un proces de instalare atent organizat."
+        description="Parquet Doors | CMG International Consult SRL oferă uși de interior și servicii de consultanță, măsurători și montaj pentru proiecte rezidențiale. Punem accent pe alegerea corectă a produsului, măsurători bine realizate și un proces de instalare atent organizat."
         stat={{ value: "100%", label: "Furnir natural de stejar" }}
         image={{ src: "/images/usi/stejar-auriu/stejar-auriu-01.webp", alt: "Ușă de interior din stejar auriu, montată într-o locuință" }}
         cta={{ label: "Discută cu un consultant", href: "/despre-noi" }}
