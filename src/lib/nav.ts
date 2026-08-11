@@ -1,3 +1,5 @@
+import { doorModels } from "@/lib/doors";
+
 export type NavLink = {
   label: string;
   href: string;
@@ -7,7 +9,16 @@ export type NavLink = {
 export const navLinks: NavLink[] = [
   { label: "Acasă", href: "/" },
   { label: "Despre noi", href: "/despre-noi" },
-  { label: "Uși de interior", href: "/usi-de-interior" },
+  {
+    label: "Uși de interior",
+    href: "/usi-de-interior",
+    // Model pages hang off the category page so every one of them is reachable
+    // from the header on every page, not just from the category page body.
+    children: doorModels.map((model) => ({
+      label: model.name,
+      href: `/usi-de-interior/${model.slug}`,
+    })),
+  },
   { label: "Prețuri", href: "/preturi" },
   { label: "Structura ușilor", href: "/structura-usilor" },
   {

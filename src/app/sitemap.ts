@@ -1,11 +1,12 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { getAllPosts } from "@/lib/posts";
+import { doorModels } from "@/lib/doors";
 
 // Stable "last significant content update" date for static pages.
 // Bump this when you meaningfully change static page content, rather than
 // letting every build reset lastModified to now (which Google learns to ignore).
-const STATIC_LAST_MODIFIED = new Date("2026-08-05");
+const STATIC_LAST_MODIFIED = new Date("2026-08-11");
 
 // [route, priority] — priority is a relative hint (home/commercial pages first).
 const staticRoutes: Array<[string, number]> = [
@@ -37,6 +38,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority,
   }));
 
+  // Per-model pages sit just under the category page in importance: they carry
+  // the long-tail commercial intent ("uși glisante", "uși stratificate").
+  const modelEntries: MetadataRoute.Sitemap = doorModels.map((model) => ({
+    url: `${siteConfig.url}/usi-de-interior/${model.slug}`,
+    lastModified: STATIC_LAST_MODIFIED,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
   const postEntries: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
     url: `${siteConfig.url}/blog/${post.slug}`,
     lastModified: new Date(post.date),
@@ -44,5 +54,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...staticEntries, ...postEntries];
+  return [...staticEntries, ...modelEntries, ...postEntries];
 }

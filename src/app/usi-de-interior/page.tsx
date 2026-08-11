@@ -7,6 +7,7 @@ import { Section, SectionHeading } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { JsonLd } from "@/components/JsonLd";
 import { productSchema, breadcrumbSchema } from "@/lib/schema";
+import { doorModels } from "@/lib/doors";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/usi-de-interior" },
@@ -15,62 +16,15 @@ export const metadata: Metadata = {
     "Uși de interior din furnir natural de stejar, pe comandă, de la 1.850 lei cu TVA, feronerie și geam inclus. 7 configurații, montaj în București 305 lei.",
 };
 
-// Every model from the 2026 price list. Kept in the same order and at the same
-// prices as src/lib/pricing.ts — that file stays the single source of truth.
-const models = [
-  {
-    name: "Ușă cu toc plină",
-    price: 1850,
-    description:
-      "Varianta clasică, cu foaie plină, fără geam. Cea mai potrivită pentru dormitoare și camere unde contează intimitatea și izolarea fonică.",
-  },
-  {
-    name: "Ușă cu baghetă aplicată",
-    price: 1950,
-    description:
-      "Foaie plină cu baghete decorative din lemn de brad furniruit, aplicate pe suprafață. Aduce relief unei amenajări clasice fără a schimba structura ușii.",
-  },
-  {
-    name: "Ușă cu toc decupată",
-    price: 2100,
-    description:
-      "Foaie cu decupaj vitrat, cu geam mat sablat inclus în preț. Lasă lumina să treacă între încăperi — potrivită pentru holuri și camere fără fereastră.",
-  },
-  {
-    name: "Ușă cu frezări",
-    price: 2100,
-    description:
-      "Foaie plină cu frezări executate în suprafață, care desenează casete sau linii verticale. O alegere pentru amenajări clasice și neoclasice.",
-  },
-  {
-    name: "Ușă stratificată",
-    price: 2450,
-    description:
-      "Construcție masivă, cu tăblii din MDF furniruit în locul structurii celulare. Foaia este mai plină și mai grea decât la varianta celulară.",
-  },
-  {
-    name: "Ușă glisantă (plină sau decupată)",
-    price: 2450,
-    description:
-      "Culisează pe lângă perete în loc să se deschidă spre interior. Recuperează spațiul unei deschideri complete — util în apartamente compacte.",
-  },
-  {
-    name: "Ușă glisantă masivă",
-    price: 2650,
-    description:
-      "Varianta glisantă cu foaie masivă. Cea mai solidă configurație din listă, pentru deschideri largi și treceri între living și bucătărie.",
-  },
-];
-
 // Offer tiers — keep in sync with the price list in src/lib/pricing.ts.
 const doorProductSchema = productSchema({
   name: "Uși de interior pe comandă Parquet Doors",
   description:
     "Uși de interior din furnir natural de stejar, executate pe comandă în finisaje stejar auriu, wenge, nuc, cireș și mahon. Disponibile cu toc plin, toc decupat, baghetă aplicată, frezări, stratificate, glisante sau glisante masive.",
   image: "/images/usi/stejar-auriu/stejar-auriu-06.webp",
-  offers: models.map((m) => ({
-    name: m.name,
-    description: m.description,
+  offers: doorModels.map((m) => ({
+    name: m.priceKey,
+    description: m.summary,
     price: m.price,
   })),
 });
@@ -149,8 +103,12 @@ export default function UsiDeInteriorPage() {
           />
 
           <div className="mt-10 flex flex-col gap-5">
-            {models.map((model) => (
-              <div key={model.name} className="rounded-2xl border border-border bg-card p-6">
+            {doorModels.map((model) => (
+              <Link
+                key={model.slug}
+                href={`/usi-de-interior/${model.slug}`}
+                className="rounded-2xl border border-border bg-card p-6 transition hover:border-accent"
+              >
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                   <h3 className="font-heading text-lg font-semibold text-primary">{model.name}</h3>
                   <p className="whitespace-nowrap font-semibold text-primary">
@@ -158,9 +116,12 @@ export default function UsiDeInteriorPage() {
                   </p>
                 </div>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {model.description}
+                  {model.summary}
                 </p>
-              </div>
+                <p className="mt-3 text-sm font-medium text-accent-text">
+                  Vezi detalii despre {model.name.toLowerCase()} →
+                </p>
+              </Link>
             ))}
           </div>
 
