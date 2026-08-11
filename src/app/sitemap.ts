@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { getAllPosts } from "@/lib/posts";
 import { doorModels } from "@/lib/doors";
+import { zones } from "@/lib/zones";
 
 // Stable "last significant content update" date for static pages.
 // Bump this when you meaningfully change static page content, rather than
@@ -54,5 +55,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...staticEntries, ...modelEntries, ...postEntries];
+  const zoneEntries: MetadataRoute.Sitemap = zones.map((zone) => ({
+    url: `${siteConfig.url}/zone/${zone.slug}`,
+    lastModified: STATIC_LAST_MODIFIED,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticEntries, ...modelEntries, ...zoneEntries, ...postEntries];
 }

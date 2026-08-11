@@ -245,6 +245,38 @@ export function serviceSchema(path: ServicePath) {
   };
 }
 
+/**
+ * A service-area page: the business, scoped to one area, with the named
+ * localities exposed as `areaServed` so the geographic claim is machine-readable
+ * rather than only present in prose.
+ */
+export function serviceAreaSchema(zone: {
+  slug: string;
+  name: string;
+  metaTitle: string;
+  metaDescription: string;
+  places: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: zone.metaTitle,
+    description: zone.metaDescription,
+    serviceType: "Uși de interior pe comandă, măsurători și montaj",
+    url: canonicalUrl(`/zone/${zone.slug}`),
+    provider: { "@id": BUSINESS_ID },
+    areaServed: [
+      { "@type": "AdministrativeArea", name: zone.name },
+      ...zone.places.map((place) => ({ "@type": "Place", name: place })),
+    ],
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl: canonicalUrl("/oferta"),
+      servicePhone: siteConfig.phone,
+    },
+  };
+}
+
 /** WebSite node — ties every page back to one publisher entity. */
 export function websiteSchema() {
   return {

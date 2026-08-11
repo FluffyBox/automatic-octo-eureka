@@ -52,6 +52,8 @@ export const footerServiceLinks: NavLink[] = [
   { label: "Măsurători", href: "/servicii/consultanta-masuratori" },
   { label: "Montaj", href: "/servicii/montaj" },
   { label: "Cerere de ofertă", href: "/oferta" },
+  { label: "Uși de interior Sector 3", href: "/zone/bucuresti-sector-3" },
+  { label: "Uși de interior Ilfov", href: "/zone/ilfov" },
 ];
 
 export const footerLegalLinks: NavLink[] = [
