@@ -9,9 +9,9 @@ import { priceCategories, pricingNotes } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/preturi" },
-  title: "Prețuri uși de interior 2026",
+  title: "Prețuri uși de interior 2026 — de la 1.850 lei",
   description:
-    "Lista de prețuri pentru uși de interior, debara, căptușeală, pervaz și montaj. Prețuri actualizate 2026, TVA inclus.",
+    "Lista completă de prețuri 2026 pentru uși de interior, debara, căptușeală, pervaz și montaj în București. De la 1.850 lei, TVA și feronerie incluse.",
 };
 
 const breadcrumb = breadcrumbSchema([

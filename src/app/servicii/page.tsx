@@ -8,8 +8,9 @@ import { breadcrumbSchema, serviceSchema, webPageSchema, SERVICES } from "@/lib/
 
 export const metadata: Metadata = {
   alternates: { canonical: "/servicii" },
-  title: "Servicii",
-  description: "Consultanță, măsurători, montaj și asistență pentru alegerea modelului de ușă potrivit locuinței tale.",
+  title: "Servicii pentru uși de interior în București",
+  description:
+    "Consultanță, măsurători la domiciliu și montaj pentru uși de interior în București și Ilfov. Montaj de la 305 lei cu TVA.",
 };
 
 const breadcrumb = breadcrumbSchema([

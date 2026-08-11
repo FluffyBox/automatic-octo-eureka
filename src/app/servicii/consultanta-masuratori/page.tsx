@@ -23,7 +23,7 @@ export default function ConsultantaMasuratoriPage() {
     <>
       <JsonLd data={[serviceSchema("/servicii/consultanta-masuratori"), breadcrumb]} />
       <PageHero
-        title="Alege corect înainte de a comanda"
+        title="Consultanță și măsurători pentru uși de interior"
         description="Prin consultanță și măsurători, stabilim ce soluții se potrivesc locuinței tale și verificăm informațiile tehnice necesare proiectului."
         cta={{ label: "Programează măsurătorile", href: "/oferta" }}
       />

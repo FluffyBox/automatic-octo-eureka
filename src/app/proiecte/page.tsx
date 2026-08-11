@@ -40,7 +40,7 @@ export default function ProiectePage() {
     <>
       <JsonLd data={[gallery, breadcrumb]} />
       <PageHero
-        title="Inspirație pentru locuința ta"
+        title="Proiecte cu uși de interior montate în București"
         description="Descoperă exemple de uși integrate în diferite tipuri de amenajări și folosește-le ca punct de plecare pentru propriul proiect."
         cta={{ label: "Solicită o ofertă", href: "/oferta" }}
       />
