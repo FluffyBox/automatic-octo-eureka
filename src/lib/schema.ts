@@ -92,17 +92,19 @@ export function localBusinessSchema() {
       },
     ],
     ...(socialProfiles().length ? { sameAs: socialProfiles() } : {}),
-    ...(siteConfig.googleRating.count > 0
-      ? {
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: siteConfig.googleRating.value,
-            reviewCount: siteConfig.googleRating.count,
-            bestRating: 5,
-            worstRating: 1,
-          },
-        }
-      : {}),
+    // NOTE: deliberately no `aggregateRating` here.
+    //
+    // Google treats a rating about entity A published on entity A's own site as
+    // "self-serving", and pages using LocalBusiness or Organization markup are
+    // ineligible for the star review feature because of it. So this could never
+    // render stars — it could only earn a structured-data manual action, which
+    // would suppress every other rich result on the site.
+    //
+    // The Google rating stays visible to humans via <GoogleRatingBadge>, which
+    // is fine: the restriction is on the markup, not on showing the number.
+    // Star ratings for this business are meant to reach Search through the
+    // Google Business Profile instead.
+    // https://developers.google.com/search/docs/appearance/structured-data/review-snippet
   };
 }
 
